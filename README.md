@@ -36,18 +36,18 @@ A Flatpak application that provides individual desktop launchers for iCloud web 
 
 3. **Flathub Repository**
    ```bash
-   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+   flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
    ```
 
 4. **GNOME Runtime and SDK**
    ```bash
-   flatpak install flathub org.gnome.Platform//47
-   flatpak install flathub org.gnome.Sdk//47
+   flatpak install --user flathub org.gnome.Platform//47
+   flatpak install --user flathub org.gnome.Sdk//47
    ```
 
 5. **Epiphany Browser** (dependency)
    ```bash
-   flatpak install flathub org.gnome.Epiphany
+   flatpak install --user flathub org.gnome.Epiphany
    ```
 
 ### Icons

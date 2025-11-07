@@ -11,13 +11,13 @@ sudo apt install flatpak flatpak-builder  # Debian/Ubuntu
 sudo dnf install flatpak flatpak-builder  # Fedora
 
 # Add Flathub
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 # Install required runtimes
-flatpak install flathub org.gnome.Platform//47 org.gnome.Sdk//47
+flatpak install --user flathub org.gnome.Platform//47 org.gnome.Sdk//47
 
 # Install Epiphany (required dependency)
-flatpak install flathub org.gnome.Epiphany
+flatpak install --user flathub org.gnome.Epiphany
 ```
 
 ## Step 1: Download Icons
@@ -78,7 +78,7 @@ update-desktop-database ~/.local/share/flatpak/exports/share/applications
 
 **Can't find Epiphany?**
 ```bash
-flatpak install flathub org.gnome.Epiphany
+flatpak install --user flathub org.gnome.Epiphany
 ```
 
 ## Next Steps
