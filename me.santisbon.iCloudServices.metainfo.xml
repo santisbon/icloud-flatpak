@@ -46,7 +46,7 @@
       <description>
         <p>Initial release</p>
         <ul>
-          <li>Support for 8 iCloud services</li>
+          <li>Support for iCloud services</li>
           <li>WebKit compatibility via Epiphany browser</li>
           <li>Individual desktop launchers for each service</li>
           <li>Application mode for native-like experience</li>

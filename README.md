@@ -1,17 +1,20 @@
 # iCloud Services for Linux
 
-A Flatpak application that provides individual desktop launchers for iCloud web services on Linux. Each iCloud service (Mail, Drive, Calendar, etc.) appears as a separate application in your desktop environment, launching in a built-in WebKit browser for the best compatibility with Apple products.
+A Flatpak application that provides individual desktop launchers for iCloud web services on Linux. Each iCloud service (Mail, Calendar, Drive, etc.) appears as a separate application in your desktop environment, launching in a built-in WebKit browser for the best compatibility with Apple services.
 
 ## Features
 
-- 8 individual iCloud service launchers:
+- Individual iCloud service launchers:
   - iCloud Mail
-  - iCloud Drive
-  - iCloud Calendar
   - iCloud Contacts
+  - iCloud Calendar
   - iCloud Photos
+  - iCloud Drive
   - iCloud Notes
   - iCloud Reminders
+  - iCloud Pages
+  - iCloud Numbers
+  - iCloud Keynote
   - iCloud Find My
 
 - Uses Epiphany (GNOME Web) browser with WebKit engine for full iCloud compatibility
@@ -102,7 +105,7 @@ flatpak install --user icloud-services.flatpak
 
 ### Testing Checklist
 
-- [ ] All 8 desktop launchers appear in application menu
+- [ ] All desktop launchers appear in application menu
 - [ ] Icons display correctly
 - [ ] Each service launches Epiphany in application mode
 - [ ] iCloud services load properly (WebKit compatibility)

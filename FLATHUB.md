@@ -72,7 +72,7 @@ Flathub requires AppStream metadata. Create this file:
       <description>
         <p>Initial release</p>
         <ul>
-          <li>Support for 8 iCloud services</li>
+          <li>Support for iCloud services</li>
           <li>WebKit compatibility via Epiphany</li>
         </ul>
       </description>
@@ -307,7 +307,7 @@ If Flathub rejects due to trademark concerns, you can:
 - [ ] App ID follows reverse-DNS format you control
 - [ ] AppStream metadata validates with no errors
 - [ ] App builds successfully locally
-- [ ] All 8 services launch and work correctly
+- [ ] All services launch and work correctly
 - [ ] Icons display properly
 - [ ] Screenshots are high-quality and representative
 - [ ] Source code is in a public Git repository

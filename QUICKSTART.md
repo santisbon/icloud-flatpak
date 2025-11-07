@@ -44,7 +44,7 @@ flatpak run me.santisbon.iCloudServices mail
 
 ## That's It!
 
-You now have 8 iCloud service launchers on your Linux desktop. Each one opens in Epiphany with full WebKit compatibility.
+You now have iCloud service launchers on your Linux desktop. Each one opens in Epiphany with full WebKit compatibility.
 
 ## Troubleshooting
 
@@ -70,4 +70,4 @@ rm -rf ~/.var/app/me.santisbon.iCloudServices/data/icloud
 - See [FLATHUB.md](FLATHUB.md) to publish to Flathub
 - Check [MULTI-ARCH.md](MULTI-ARCH.md) for ARM builds
 
-Enjoy iCloud on Linux! 🎉
+Enjoy iCloud on Linux!
