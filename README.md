@@ -15,7 +15,7 @@ A Flatpak application that provides individual desktop launchers for iCloud web 
   - iCloud Find My
 
 - Uses Epiphany (GNOME Web) browser with WebKit engine for full iCloud compatibility
-- Each service runs in application mode with isolated profiles
+- Each service runs in application mode with a shared profile (log in once, access all services)
 - Native desktop integration with proper icons and categories
 
 ## Prerequisites
@@ -106,7 +106,8 @@ flatpak install --user icloud-services.flatpak
 - [ ] Icons display correctly
 - [ ] Each service launches Epiphany in application mode
 - [ ] iCloud services load properly (WebKit compatibility)
-- [ ] Login persists across sessions (separate profiles per service)
+- [ ] Login persists across sessions (shared profile for all services)
+- [ ] Can access multiple services without re-authentication
 - [ ] Network connectivity works
 - [ ] File uploads/downloads work (Drive, Photos)
 
@@ -131,11 +132,14 @@ gtk-update-icon-cache ~/.local/share/flatpak/exports/share/icons/hicolor
 
 ### Epiphany Issues
 
-Epiphany is bundled with the app. If you encounter browser issues, try:
+Epiphany is bundled with the app. All services share one profile, so you only log in once.
+
+**To clear all iCloud data (logout):**
 ```bash
-# Clear Epiphany data for a specific service
-rm -rf ~/.var/app/me.santisbon.iCloudServices/data/icloud-mail
+rm -rf ~/.var/app/me.santisbon.iCloudServices/data/icloud
 ```
+
+**Note:** This will log you out of all iCloud services.
 
 ### Desktop Files Not Appearing
 

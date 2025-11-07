@@ -3,43 +3,43 @@
 # This script launches iCloud services using Epiphany browser
 
 SERVICE="$1"
-APPID="me.santisbon.iCloudServices"
 
 case "$SERVICE" in
     mail)
         URL="https://www.icloud.com/mail"
-        TITLE="iCloud Mail"
-        ;;
-    drive)
-        URL="https://www.icloud.com/iclouddrive"
-        TITLE="iCloud Drive"
-        ;;
-    calendar)
-        URL="https://www.icloud.com/calendar"
-        TITLE="iCloud Calendar"
         ;;
     contacts)
         URL="https://www.icloud.com/contacts"
-        TITLE="iCloud Contacts"
+        ;;
+    calendar)
+        URL="https://www.icloud.com/calendar"
         ;;
     photos)
         URL="https://www.icloud.com/photos"
-        TITLE="iCloud Photos"
+        ;;
+    drive)
+        URL="https://www.icloud.com/iclouddrive"
         ;;
     notes)
         URL="https://www.icloud.com/notes"
-        TITLE="iCloud Notes"
         ;;
     reminders)
         URL="https://www.icloud.com/reminders"
-        TITLE="iCloud Reminders"
+        ;;
+    pages)
+        URL="https://www.icloud.com/pages"
+        ;;
+    numbers)
+        URL="https://www.icloud.com/numbers"
+        ;;
+    keynote)
+        URL="https://www.icloud.com/keynote"
         ;;
     find)
         URL="https://www.icloud.com/find"
-        TITLE="iCloud Find My"
         ;;
     *)
-        echo "Usage: $0 {mail|drive|calendar|contacts|photos|notes|reminders|find}"
+        echo "Usage: $0 {mail|contacts|calendar|photos|drive|notes|reminders|pages|numbers|keynote|find}"
         exit 1
         ;;
 esac
@@ -47,7 +47,8 @@ esac
 # Launch Epiphany with the specific iCloud URL
 # Using app mode for a more native feel
 # Epiphany is available directly since it's our base app
+# All services share ONE profile so you only log in once
 exec epiphany \
     --application-mode \
-    --profile="$XDG_DATA_HOME/icloud-$SERVICE" \
+    --profile="$XDG_DATA_HOME/icloud" \
     "$URL"

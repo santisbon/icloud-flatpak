@@ -58,10 +58,10 @@ gtk-update-icon-cache ~/.local/share/flatpak/exports/share/icons/hicolor
 update-desktop-database ~/.local/share/flatpak/exports/share/applications
 ```
 
-**Browser issues?**
-Epiphany is bundled with the app. Try clearing the service data:
+**Browser issues or need to logout?**
+All services share one profile. Clear it to logout:
 ```bash
-rm -rf ~/.var/app/me.santisbon.iCloudServices/data/icloud-*
+rm -rf ~/.var/app/me.santisbon.iCloudServices/data/icloud
 ```
 
 ## Next Steps
