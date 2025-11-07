@@ -49,9 +49,8 @@
         <p>Initial release</p>
         <ul>
           <li>Support for iCloud services</li>
-          <li>WebKit compatibility via Epiphany browser</li>
           <li>Individual desktop launchers for each service</li>
-          <li>Application mode for native-like experience</li>
+          <li>App mode for native-like experience</li>
         </ul>
       </description>
     </release>
