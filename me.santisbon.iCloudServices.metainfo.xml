@@ -6,6 +6,8 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GNU GPL v3</project_license>
 
+  <icon type="stock">com.apple.icloud.Drive</icon>
+
   <description>
     <p>
       iCloud Services provides native desktop integration for Apple's iCloud web services.
