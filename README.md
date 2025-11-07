@@ -152,12 +152,12 @@ update-desktop-database ~/.local/share/flatpak/exports/share/applications
 
 ### Permission Issues
 
-The app requires these permissions:
-- `--share=network` - Access iCloud services
-- `--talk-name=org.freedesktop.Flatpak` - Launch Epiphany
-- `--socket=wayland` / `--socket=fallback-x11` - Display windows
-- `--share=ipc` - Inter-process communication
-- `--device=dri` - Hardware acceleration
+The app requires these minimal permissions:
+- `--talk-name=org.freedesktop.Flatpak` - Launch Epiphany browser from the launcher
+- `--share=ipc` - Inter-process communication for X11 compatibility
+- `--socket=wayland` / `--socket=fallback-x11` - Desktop environment integration
+
+Note: Network access and other permissions are handled by Epiphany itself, not this launcher.
 
 ## Uninstalling
 

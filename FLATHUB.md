@@ -234,6 +234,15 @@ Once approved:
 
 4. **Buildbot will automatically build and publish**
 
+## Permissions Explanation
+
+This app uses minimal permissions following Flatpak best practices:
+- `--talk-name=org.freedesktop.Flatpak` - Required to spawn Epiphany as a separate Flatpak
+- `--share=ipc` - Standard for desktop apps (X11 shared memory)
+- `--socket=wayland` / `--socket=fallback-x11` - Desktop environment integration
+
+Note: The launcher doesn't need network access or GPU access - those are handled by Epiphany itself running in its own sandbox.
+
 ## Flathub Guidelines
 
 Review the official guidelines before submitting:
