@@ -219,7 +219,7 @@ For issues and contributions, please refer to the project repository.
 - [FLATHUB.md](FLATHUB.md) - Guide for publishing to Flathub
 - [MULTI-ARCH.md](MULTI-ARCH.md) - Multi-architecture build instructions
 - [Chromium](https://flathub.org/en/apps/org.chromium.Chromium) - Browser backend
-- [Freedesktop Runtime](https://docs.flatpak.org/en/latest/available-runtimes.html) documentation
+- [Freedesktop Runtime](https://docs.flatpak.org/en/latest/available-runtimes.html) - [Releases](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/wikis/Releases)
 
 ## Next Steps:
 
