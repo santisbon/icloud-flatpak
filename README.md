@@ -45,10 +45,7 @@ A Flatpak application that provides individual desktop launchers for iCloud web 
    flatpak install --user flathub org.gnome.Sdk//49
    ```
 
-5. **Epiphany Browser** (dependency)
-   ```bash
-   flatpak install --user flathub org.gnome.Epiphany
-   ```
+**Note:** Epiphany is bundled as a base application - no separate installation needed!
 
 ### Icons
 
@@ -135,12 +132,12 @@ If icons don't appear:
 gtk-update-icon-cache ~/.local/share/flatpak/exports/share/icons/hicolor
 ```
 
-### Epiphany Not Found
+### Epiphany Issues
 
-Ensure Epiphany is installed:
+Epiphany is bundled with the app. If you encounter browser issues, try:
 ```bash
-flatpak install flathub org.gnome.Epiphany
-flatpak run org.gnome.Epiphany --version
+# Clear Epiphany data for a specific service
+rm -rf ~/.var/app/me.santisbon.iCloudServices/data/icloud-mail
 ```
 
 ### Desktop Files Not Appearing
@@ -153,11 +150,10 @@ update-desktop-database ~/.local/share/flatpak/exports/share/applications
 ### Permission Issues
 
 The app requires these minimal permissions:
-- `--talk-name=org.freedesktop.Flatpak` - Launch Epiphany browser from the launcher
 - `--share=ipc` - Inter-process communication for X11 compatibility
 - `--socket=wayland` / `--socket=fallback-x11` - Desktop environment integration
 
-Note: Network access and other permissions are handled by Epiphany itself, not this launcher.
+Note: Epiphany is bundled as a base application, so all necessary permissions (network, GPU, etc.) are inherited from the Epiphany base app.
 
 ## Uninstalling
 

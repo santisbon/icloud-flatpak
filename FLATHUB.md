@@ -237,11 +237,13 @@ Once approved:
 ## Permissions Explanation
 
 This app uses minimal permissions following Flatpak best practices:
-- `--talk-name=org.freedesktop.Flatpak` - Required to spawn Epiphany as a separate Flatpak
 - `--share=ipc` - Standard for desktop apps (X11 shared memory)
 - `--socket=wayland` / `--socket=fallback-x11` - Desktop environment integration
 
-Note: The launcher doesn't need network access or GPU access - those are handled by Epiphany itself running in its own sandbox.
+**Base Application:** The app extends `org.gnome.Epiphany` as its base, which means:
+- Epiphany is bundled within the app (no separate installation needed)
+- All necessary permissions (network, GPU, etc.) are inherited from the Epiphany base
+- The launcher is self-contained and doesn't need additional runtime dependencies
 
 ## Flathub Guidelines
 
@@ -258,12 +260,12 @@ Since "iCloud" is an Apple trademark, you may need to:
 - Add clear disclaimers that this is unofficial
 - Be prepared for potential rejection or rename request
 
-### Epiphany Dependency
+### Epiphany Base Application
 
-Your app requires Epiphany to be installed. In the Flathub PR, clearly state:
-- Runtime requirement: org.gnome.Epiphany
-- Why: iCloud requires WebKit, which Epiphany provides
-- Users must install Epiphany separately
+This app uses Epiphany as its base application (`base: org.gnome.Epiphany`):
+- Epiphany is automatically included - users don't need to install it separately
+- The app is self-contained and has all WebKit functionality built-in
+- This is the recommended Flatpak approach for apps that extend existing applications
 
 ### Icons8 Attribution
 

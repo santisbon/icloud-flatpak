@@ -16,8 +16,7 @@ flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/fl
 # Install required runtimes
 flatpak install --user flathub org.gnome.Platform//49 org.gnome.Sdk//49
 
-# Install Epiphany (required dependency)
-flatpak install --user flathub org.gnome.Epiphany
+# Note: Epiphany is bundled - no separate install needed!
 ```
 
 ## Step 1: Download Icons
@@ -76,9 +75,10 @@ gtk-update-icon-cache ~/.local/share/flatpak/exports/share/icons/hicolor
 update-desktop-database ~/.local/share/flatpak/exports/share/applications
 ```
 
-**Can't find Epiphany?**
+**Browser issues?**
+Epiphany is bundled with the app. Try clearing the service data:
 ```bash
-flatpak install --user flathub org.gnome.Epiphany
+rm -rf ~/.var/app/me.santisbon.iCloudServices/data/icloud-*
 ```
 
 ## Next Steps
