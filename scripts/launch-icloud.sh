@@ -2,18 +2,6 @@
 # Main iCloud Service Launcher
 # This script launches iCloud services using Epiphany browser
 
-# Check if Epiphany is installed
-if ! flatpak info org.gnome.Epiphany &>/dev/null; then
-    echo "Error: Epiphany browser is required but not installed."
-    echo ""
-    echo "Please install it with:"
-    echo "  flatpak install flathub org.gnome.Epiphany"
-    echo ""
-    echo "Note: If you installed via GNOME Software or KDE Discover, this should"
-    echo "have been installed automatically. Try reinstalling the app from the app center."
-    exit 1
-fi
-
 SERVICE="$1"
 
 case "$SERVICE" in
@@ -57,10 +45,7 @@ case "$SERVICE" in
 esac
 
 # Launch Epiphany with the specific iCloud URL
-# Using app mode for a more native feel
-# Epiphany must be installed separately: flatpak install flathub org.gnome.Epiphany
 # All services share ONE profile so you only log in once
-exec flatpak run --command=epiphany org.gnome.Epiphany \
-    --application-mode \
-    --profile="$HOME/.var/app/me.santisbon.iCloudServices/data/icloud" \
-    "$URL"
+# Epiphany must be installed separately: flatpak install flathub org.gnome.Epiphany
+# Use -- to separate options from arguments to prevent URL being treated as search
+exec flatpak-spawn --host flatpak run org.gnome.Epiphany -- "$URL"
