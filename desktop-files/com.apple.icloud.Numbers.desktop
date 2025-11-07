@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=iCloud Numbers
+Comment=Access iCloud Numbers in your browser
+Icon=com.apple.icloud.Numbers
+Exec=/app/bin/launch-icloud.sh numbers
+Categories=Office;Spreadsheet;
+Terminal=false
+StartupNotify=true
+StartupWMClass=icloud-numbers

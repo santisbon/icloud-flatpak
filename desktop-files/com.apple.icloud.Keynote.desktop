@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=iCloud Keynote
+Comment=Access iCloud Keynote in your browser
+Icon=com.apple.icloud.Keynote
+Exec=/app/bin/launch-icloud.sh keynote
+Categories=Office;Presentation;
+Terminal=false
+StartupNotify=true
+StartupWMClass=icloud-keynote

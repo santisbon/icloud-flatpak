@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=iCloud Pages
+Comment=Access iCloud Pages in your browser
+Icon=com.apple.icloud.Pages
+Exec=/app/bin/launch-icloud.sh pages
+Categories=Office;WordProcessor;
+Terminal=false
+StartupNotify=true
+StartupWMClass=icloud-pages
