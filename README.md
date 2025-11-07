@@ -111,14 +111,14 @@ flatpak install --user icloud-services.flatpak
 
 ### Testing Checklist
 
-- [ ] All desktop launchers appear in application menu
-- [ ] Icons display correctly
-- [ ] Each service launches Chromium in app mode (no address bar)
-- [ ] Each service has its own dock icon (not grouped together)
-- [ ] iCloud services load properly
-- [ ] Login persists across sessions for each service
-- [ ] Network connectivity works
-- [ ] File uploads/downloads work (Drive, Photos)
+- [x] All desktop launchers appear in application menu
+- [x] Icons display correctly
+- [x] Each service launches Chromium in app mode (no address bar)
+- [x] Each service has its own dock icon (not grouped together)
+- [x] iCloud services load properly
+- [x] Login persists across sessions for each service
+- [x] Network connectivity works
+- [x] File uploads/downloads work (Drive, Photos)
 
 ### Known Limitations
 
