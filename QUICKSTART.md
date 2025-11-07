@@ -19,24 +19,7 @@ flatpak install --user flathub org.gnome.Platform//49 org.gnome.Sdk//49
 # Note: Epiphany is bundled - no separate install needed!
 ```
 
-## Step 1: Download Icons
-
-Before building, download 8 icons from Icons8:
-
-1. Visit https://icons8.com/
-2. Search for each service name (mail, drive, calendar, contacts, photos, notes, reminders, location)
-3. Download as 100x100 PNG
-4. Save to `icons/` directory with these names:
-   - `icloud-mail.png`
-   - `icloud-drive.png`
-   - `icloud-calendar.png`
-   - `icloud-contacts.png`
-   - `icloud-photos.png`
-   - `icloud-notes.png`
-   - `icloud-reminders.png`
-   - `icloud-find.png`
-
-## Step 2: Build and Install
+## Step 1: Build and Install
 
 ```bash
 cd icloud-flatpak
@@ -47,7 +30,7 @@ flatpak-builder --user --install --force-clean build-dir me.santisbon.iCloudServ
 
 Wait 2-5 minutes for the build to complete.
 
-## Step 3: Launch!
+## Step 2: Launch!
 
 **From the command line:**
 ```bash

@@ -25,14 +25,14 @@ modules:
       - install -Dm644 desktop-files/com.apple.icloud.Notes.desktop /app/share/applications/com.apple.icloud.Notes.desktop
       - install -Dm644 desktop-files/com.apple.icloud.Reminders.desktop /app/share/applications/com.apple.icloud.Reminders.desktop
       - install -Dm644 desktop-files/com.apple.icloud.Find.desktop /app/share/applications/com.apple.icloud.Find.desktop
-      - install -Dm644 icons/icloud-mail.png /app/share/icons/hicolor/128x128/apps/com.apple.icloud.Mail.png
-      - install -Dm644 icons/icloud-drive.png /app/share/icons/hicolor/128x128/apps/com.apple.icloud.Drive.png
-      - install -Dm644 icons/icloud-calendar.png /app/share/icons/hicolor/128x128/apps/com.apple.icloud.Calendar.png
-      - install -Dm644 icons/icloud-contacts.png /app/share/icons/hicolor/128x128/apps/com.apple.icloud.Contacts.png
-      - install -Dm644 icons/icloud-photos.png /app/share/icons/hicolor/128x128/apps/com.apple.icloud.Photos.png
-      - install -Dm644 icons/icloud-notes.png /app/share/icons/hicolor/128x128/apps/com.apple.icloud.Notes.png
-      - install -Dm644 icons/icloud-reminders.png /app/share/icons/hicolor/128x128/apps/com.apple.icloud.Reminders.png
-      - install -Dm644 icons/icloud-find.png /app/share/icons/hicolor/128x128/apps/com.apple.icloud.Find.png
+      - install -Dm644 icons/mail.png /app/share/icons/hicolor/128x128/apps/com.apple.icloud.Mail.png
+      - install -Dm644 icons/drive.png /app/share/icons/hicolor/128x128/apps/com.apple.icloud.Drive.png
+      - install -Dm644 icons/calendar.png /app/share/icons/hicolor/128x128/apps/com.apple.icloud.Calendar.png
+      - install -Dm644 icons/contacts.png /app/share/icons/hicolor/128x128/apps/com.apple.icloud.Contacts.png
+      - install -Dm644 icons/photos.png /app/share/icons/hicolor/128x128/apps/com.apple.icloud.Photos.png
+      - install -Dm644 icons/notes.png /app/share/icons/hicolor/128x128/apps/com.apple.icloud.Notes.png
+      - install -Dm644 icons/reminders.png /app/share/icons/hicolor/128x128/apps/com.apple.icloud.Reminders.png
+      - install -Dm644 icons/find.png /app/share/icons/hicolor/128x128/apps/com.apple.icloud.Find.png
     sources:
       - type: dir
         path: .
