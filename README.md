@@ -48,7 +48,10 @@ A Flatpak application that provides individual desktop launchers for iCloud web 
    flatpak install --user flathub org.gnome.Sdk//49
    ```
 
-**Note:** Epiphany is bundled as a base application - no separate installation needed!
+5. **Epiphany Browser** (required dependency)
+   ```bash
+   flatpak install --user flathub org.gnome.Epiphany
+   ```
 
 ## Building
 
@@ -133,16 +136,19 @@ If icons don't appear:
 gtk-update-icon-cache ~/.local/share/flatpak/exports/share/icons/hicolor
 ```
 
-### Epiphany Issues
+### Epiphany Not Found
 
-Epiphany is bundled with the app. All services share one profile, so you only log in once.
+Ensure Epiphany is installed:
+```bash
+flatpak install --user flathub org.gnome.Epiphany
+```
 
-**To clear all iCloud data (logout):**
+### Logout / Clear Data
+
+All services share one profile. To logout of all iCloud services:
 ```bash
 rm -rf ~/.var/app/me.santisbon.iCloudServices/data/icloud
 ```
-
-**Note:** This will log you out of all iCloud services.
 
 ### Desktop Files Not Appearing
 
@@ -156,8 +162,9 @@ update-desktop-database ~/.local/share/flatpak/exports/share/applications
 The app requires these minimal permissions:
 - `--share=ipc` - Inter-process communication for X11 compatibility
 - `--socket=wayland` / `--socket=fallback-x11` - Desktop environment integration
+- `--talk-name=org.freedesktop.Flatpak` - Permission to spawn Epiphany as a separate Flatpak
 
-Note: Epiphany is bundled as a base application, so all necessary permissions (network, GPU, etc.) are inherited from the Epiphany base app.
+Note: Network access, GPU, and other browser permissions are handled by Epiphany running in its own sandbox.
 
 ## Uninstalling
 
@@ -184,7 +191,7 @@ flatpak-builder --user --install --force-clean build-dir me.santisbon.iCloudServ
 
 ## License and Attribution
 
-This project is provided as-is. Icons must be downloaded from Icons8 (https://icons8.com/) and require attribution per their free license terms.
+This project is provided as-is.
 
 iCloud is a trademark of Apple Inc. This is an unofficial third-party application not affiliated with Apple.
 

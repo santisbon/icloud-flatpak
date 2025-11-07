@@ -46,9 +46,9 @@ esac
 
 # Launch Epiphany with the specific iCloud URL
 # Using app mode for a more native feel
-# Epiphany is available directly since it's our base app
+# Epiphany must be installed separately: flatpak install flathub org.gnome.Epiphany
 # All services share ONE profile so you only log in once
-exec epiphany \
+exec flatpak run --command=epiphany org.gnome.Epiphany \
     --application-mode \
-    --profile="$XDG_DATA_HOME/icloud" \
+    --profile="$HOME/.var/app/me.santisbon.iCloudServices/data/icloud" \
     "$URL"

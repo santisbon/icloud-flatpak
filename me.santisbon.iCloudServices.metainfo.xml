@@ -21,7 +21,7 @@
     </ul>
     <p>
       Note: This is an unofficial third-party application not affiliated with Apple Inc.
-      iCloud is a trademark of Apple Inc. Icons provided by Icons8 (https://icons8.com).
+      iCloud is a trademark of Apple Inc. Icons by The Cross-Platform Organization (https://github.com/cross-platform) under GNU GPL v3.
     </p>
   </description>
 
@@ -63,6 +63,10 @@
   <launchable type="desktop-id">com.apple.icloud.Notes.desktop</launchable>
   <launchable type="desktop-id">com.apple.icloud.Reminders.desktop</launchable>
   <launchable type="desktop-id">com.apple.icloud.Find.desktop</launchable>
+
+  <requires>
+    <id>org.gnome.Epiphany</id>
+  </requires>
 
   <supports>
     <control>pointing</control>

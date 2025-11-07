@@ -1,6 +1,4 @@
 id: me.santisbon.iCloudServices
-base: org.gnome.Epiphany
-base-version: stable
 runtime: org.gnome.Platform
 runtime-version: '49'
 sdk: org.gnome.Sdk
@@ -10,6 +8,7 @@ finish-args:
   - --share=ipc
   - --socket=fallback-x11
   - --socket=wayland
+  - --talk-name=org.freedesktop.Flatpak
 
 modules:
   - name: icloud-services

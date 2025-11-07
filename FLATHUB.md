@@ -239,11 +239,12 @@ Once approved:
 This app uses minimal permissions following Flatpak best practices:
 - `--share=ipc` - Standard for desktop apps (X11 shared memory)
 - `--socket=wayland` / `--socket=fallback-x11` - Desktop environment integration
+- `--talk-name=org.freedesktop.Flatpak` - Permission to spawn Epiphany as a separate Flatpak
 
-**Base Application:** The app extends `org.gnome.Epiphany` as its base, which means:
-- Epiphany is bundled within the app (no separate installation needed)
-- All necessary permissions (network, GPU, etc.) are inherited from the Epiphany base
-- The launcher is self-contained and doesn't need additional runtime dependencies
+**External Dependency:** This app requires Epiphany to be installed separately:
+- Epiphany runs in its own sandbox with its own permissions
+- The launcher just spawns Epiphany windows with specific URLs
+- Network, GPU, and browser permissions are handled by Epiphany itself
 
 ## Flathub Guidelines
 
@@ -260,19 +261,20 @@ Since "iCloud" is an Apple trademark, you may need to:
 - Add clear disclaimers that this is unofficial
 - Be prepared for potential rejection or rename request
 
-### Epiphany Base Application
+### Epiphany Dependency
 
-This app uses Epiphany as its base application (`base: org.gnome.Epiphany`):
-- Epiphany is automatically included - users don't need to install it separately
-- The app is self-contained and has all WebKit functionality built-in
-- This is the recommended Flatpak approach for apps that extend existing applications
+This app requires Epiphany to be installed separately:
+- Users must install: `flatpak install flathub org.gnome.Epiphany`
+- The launcher spawns Epiphany as a separate Flatpak process
+- iCloud requires WebKit for compatibility, which Epiphany provides
+- Each iCloud service opens in Epiphany's application mode
 
-### Icons8 Attribution
+### Icons Attribution
 
 Your metainfo.xml should include attribution:
 ```xml
 <description>
-  <p>Icons provided by Icons8 (https://icons8.com)</p>
+  <p>Icons by The Cross-Platform Organization (https://github.com/cross-platform) under GNU GPL v3</p>
 </description>
 ```
 
@@ -315,5 +317,5 @@ If Flathub rejects due to trademark concerns, you can:
 - [ ] Manifest uses archive source (not dir)
 - [ ] SHA256 hash is correct
 - [ ] finish-args are minimal and justified
-- [ ] Icons8 attribution is included
+- [ ] Icons attribution is included
 - [ ] Trademark concerns are addressed
