@@ -92,7 +92,7 @@ RUN dnf install -y \
     && dnf clean all
 
 # Add Flathub repository
-RUN flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+RUN flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 # Install GNOME Platform and SDK
 ARG FLATPAK_ARCH=x86_64
@@ -238,7 +238,7 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y flatpak flatpak-builder
-        flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+        flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
         flatpak install -y flathub org.gnome.Platform//${{ matrix.arch }}/47
         flatpak install -y flathub org.gnome.Sdk//${{ matrix.arch }}/47
 

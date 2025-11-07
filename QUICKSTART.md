@@ -11,7 +11,7 @@ sudo apt install flatpak flatpak-builder  # Debian/Ubuntu
 sudo dnf install flatpak flatpak-builder  # Fedora
 
 # Add Flathub
-flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 # Install required runtimes
 flatpak install --user flathub org.gnome.Platform//47 org.gnome.Sdk//47
