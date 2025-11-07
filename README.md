@@ -77,11 +77,20 @@ Quick summary:
    flatpak-builder --force-clean --user --install build-dir me.santisbon.iCloudServices.yaml
    ```
 
-### Build with Custom Build Directory
+### Export to a repository
 
 ```bash
-flatpak-builder --repo=repo --force-clean build-dir me.santisbon.iCloudServices.yaml
-flatpak build-bundle repo icloud-services.flatpak me.santisbon.iCloudServices
+flatpak-builder --force-clean --repo=repo build-dir me.santisbon.iCloudServices.yaml
+```
+
+### Share the app with a single-file bundle
+
+```bash
+flatpak build-bundle repo icloud-services.flatpak me.santisbon.iCloudServices --runtime-repo=https://flathub.org/repo/flathub.flatpakrepo
+```
+Now you can send the .flatpak file to someone and if they have the Flathub repository set up and a working network connection to install the runtime, they can install it with:
+```bash
+flatpak install --user icloud-services.flatpak
 ```
 
 ## Testing
