@@ -197,3 +197,16 @@ For issues and contributions, please refer to the project repository.
 - [FLATHUB.md](FLATHUB.md) - Guide for publishing to Flathub
 - [MULTI-ARCH.md](MULTI-ARCH.md) - Multi-architecture build instructions
 - [README-ICONS.md](README-ICONS.md) - Icon download instructions
+
+
+## Next Steps:
+
+1. Download icons (see README-ICONS.md)
+2. Build and test:
+   ```sh
+   cd icloud-flatpak
+   flatpak-builder --user --install --force-clean build-dir me.santisbon.iCloudServices.json
+   flatpak run me.santisbon.iCloudServices mail
+   ```
+3. Create GitHub repo at https://github.com/santisbon/icloud-flatpak
+4. Submit to Flathub (follow FLATHUB.md)
