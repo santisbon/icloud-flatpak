@@ -263,8 +263,17 @@ Since "iCloud" is an Apple trademark, you may need to:
 
 ### Epiphany Dependency
 
-This app requires Epiphany to be installed separately:
+This app requires Epiphany to be installed. The `<requires>` tag in metainfo.xml ensures:
+
+**Automatic installation (app centers):**
+- GNOME Software, KDE Discover, and Flathub web will automatically install Epiphany
+- Users get both apps with one click
+
+**Manual installation (command line):**
 - Users must install: `flatpak install flathub org.gnome.Epiphany`
+- The launcher includes a check and provides helpful error messages if missing
+
+**How it works:**
 - The launcher spawns Epiphany as a separate Flatpak process
 - iCloud requires WebKit for compatibility, which Epiphany provides
 - Each iCloud service opens in Epiphany's application mode

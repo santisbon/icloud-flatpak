@@ -16,7 +16,8 @@ flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/fl
 # Install required runtimes
 flatpak install --user flathub org.gnome.Platform//49 org.gnome.Sdk//49
 
-# Install Epiphany (required)
+# Install Epiphany (required for command-line builds)
+# Note: App centers install this automatically
 flatpak install --user flathub org.gnome.Epiphany
 ```
 

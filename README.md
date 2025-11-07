@@ -53,6 +53,8 @@ A Flatpak application that provides individual desktop launchers for iCloud web 
    flatpak install --user flathub org.gnome.Epiphany
    ```
 
+   **Note:** When installing via GNOME Software, KDE Discover, or Flathub web, Epiphany will be installed automatically. Manual installation is only needed when building from source or installing via command line.
+
 ## Building
 
 ### Local Build (Single Architecture)
