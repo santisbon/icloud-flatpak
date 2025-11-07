@@ -67,21 +67,10 @@ Quick summary:
 
 2. **Ensure all icons are downloaded** (see README-ICONS.md)
 
-3. **Build the Flatpak:**
-   ```bash
-   flatpak-builder --force-clean build-dir me.santisbon.iCloudServices.yaml
-   ```
-
-4. **Install locally for testing:**
-   ```bash
-   flatpak-builder --force-clean --user --install build-dir me.santisbon.iCloudServices.yaml
-   ```
-
-### Export to a repository
-
-```bash
-flatpak-builder --force-clean --repo=repo build-dir me.santisbon.iCloudServices.yaml
-```
+3. **Build and install the Flatpak:**
+      ```bash
+      flatpak-builder --force-clean --user --repo=repo --install build-dir me.santisbon.iCloudServices.yaml
+      ```
 
 ### Share the app with a single-file bundle
 
