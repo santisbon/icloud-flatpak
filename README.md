@@ -47,15 +47,6 @@ A Flatpak application that provides individual desktop launchers for iCloud web 
 
 **Note:** Epiphany is bundled as a base application - no separate installation needed!
 
-### Icons
-
-Before building, you need to download icons from Icons8. See [README-ICONS.md](README-ICONS.md) for detailed instructions.
-
-Quick summary:
-1. Visit https://icons8.com/
-2. Download 100x100 PNG icons for each service
-3. Save them in the `icons/` directory with the names specified in README-ICONS.md
-
 ## Building
 
 ### Local Build (Single Architecture)
@@ -65,9 +56,7 @@ Quick summary:
    cd icloud-flatpak
    ```
 
-2. **Ensure all icons are downloaded** (see README-ICONS.md)
-
-3. **Build and install the Flatpak:**
+2. **Build and install the Flatpak:**
       ```bash
       flatpak-builder --force-clean --user --repo=repo --install build-dir me.santisbon.iCloudServices.yaml
       ```
@@ -190,18 +179,16 @@ For issues and contributions, please refer to the project repository.
 
 - [FLATHUB.md](FLATHUB.md) - Guide for publishing to Flathub
 - [MULTI-ARCH.md](MULTI-ARCH.md) - Multi-architecture build instructions
-- [README-ICONS.md](README-ICONS.md) - Icon download instructions
 - [Epiphany](https://flathub.org/en/apps/org.gnome.Epiphany) ([manifest](https://github.com/flathub/org.gnome.Epiphany/blob/master/org.gnome.Epiphany.json)) - Base app
 - [GNOME Runtime](https://release.gnome.org/calendar/) releases
 
 ## Next Steps:
 
-1. Download icons (see README-ICONS.md)
-2. Build and test:
+1. Build and test:
    ```sh
    cd icloud-flatpak
    flatpak-builder --user --install --force-clean build-dir me.santisbon.iCloudServices.yaml
    flatpak run me.santisbon.iCloudServices mail
    ```
-3. Create GitHub repo at https://github.com/santisbon/icloud-flatpak
-4. Submit to Flathub (follow FLATHUB.md)
+2. Create GitHub repo at https://github.com/santisbon/icloud-flatpak
+3. Submit to Flathub (follow FLATHUB.md)
