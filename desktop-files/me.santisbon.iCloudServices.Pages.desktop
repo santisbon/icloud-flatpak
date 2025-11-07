@@ -2,7 +2,7 @@
 Version=1.0
 Type=Application
 Name=iCloud Pages
-Comment=Access iCloud Pages in your browser
+Comment=Access iCloud Pages
 Icon=me.santisbon.iCloudServices.Pages
 Exec=/app/bin/launch-icloud.sh pages
 Categories=Office;WordProcessor;

@@ -2,7 +2,7 @@
 Version=1.0
 Type=Application
 Name=iCloud Numbers
-Comment=Access iCloud Numbers in your browser
+Comment=Access iCloud Numbers
 Icon=me.santisbon.iCloudServices.Numbers
 Exec=/app/bin/launch-icloud.sh numbers
 Categories=Office;Spreadsheet;

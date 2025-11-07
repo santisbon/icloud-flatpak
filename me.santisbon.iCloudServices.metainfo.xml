@@ -11,15 +11,17 @@
   <description>
     <p>
       iCloud Services provides native desktop integration for Apple's iCloud web services.
-      Each service launches in a dedicated Chromium browser window in app mode (no address bar)
-      for a clean, native-like experience.
+      Each service launches in a dedicated browser window in app mode (no address bar)
+      for a clean, native-like experience. You can use your password or 
+      sign in with a passkey to use your iPhone's Face ID.
     </p>
     <p>Features:</p>
     <ul>
-      <li>Individual launchers for Mail, Drive, Calendar, Contacts, Photos, Notes, Reminders, Pages, Numbers, Keynote, and Find My</li>
+      <li>Individual launchers for Mail, Contacts, Calendar, Photos, Drive, Notes, Reminders, Pages, Numbers, Keynote, and Find My</li>
       <li>Clean app-like interface with no browser UI elements</li>
       <li>Each service has its own dock icon and persistent login</li>
       <li>Native desktop integration with proper icons and application categories</li>
+      <li>Biometric authentication with Face ID</li>
     </ul>
     <p>
       Note: This is an unofficial third-party application not affiliated with Apple Inc.
@@ -44,11 +46,10 @@
   </content_rating>
 
   <releases>
-    <release version="1.0.0" date="2025-01-15">
+    <release version="1.0.0" date="2025-11-07">
       <description>
         <p>Initial release</p>
         <ul>
-          <li>Support for iCloud services</li>
           <li>Individual desktop launchers for each service</li>
           <li>App mode for native-like experience</li>
         </ul>
@@ -57,10 +58,10 @@
   </releases>
 
   <launchable type="desktop-id">me.santisbon.iCloudServices.Mail.desktop</launchable>
-  <launchable type="desktop-id">me.santisbon.iCloudServices.Drive.desktop</launchable>
-  <launchable type="desktop-id">me.santisbon.iCloudServices.Calendar.desktop</launchable>
   <launchable type="desktop-id">me.santisbon.iCloudServices.Contacts.desktop</launchable>
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Calendar.desktop</launchable>
   <launchable type="desktop-id">me.santisbon.iCloudServices.Photos.desktop</launchable>
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Drive.desktop</launchable>
   <launchable type="desktop-id">me.santisbon.iCloudServices.Notes.desktop</launchable>
   <launchable type="desktop-id">me.santisbon.iCloudServices.Reminders.desktop</launchable>
   <launchable type="desktop-id">me.santisbon.iCloudServices.Pages.desktop</launchable>

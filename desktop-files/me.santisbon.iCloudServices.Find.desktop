@@ -2,7 +2,7 @@
 Version=1.0
 Type=Application
 Name=iCloud Find My
-Comment=Access iCloud Find My in your browser
+Comment=Access iCloud Find My
 Icon=me.santisbon.iCloudServices.Find
 Exec=/app/bin/launch-icloud.sh find
 Categories=Utility;

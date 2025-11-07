@@ -2,7 +2,7 @@
 Version=1.0
 Type=Application
 Name=iCloud Keynote
-Comment=Access iCloud Keynote in your browser
+Comment=Access iCloud Keynote
 Icon=me.santisbon.iCloudServices.Keynote
 Exec=/app/bin/launch-icloud.sh keynote
 Categories=Office;Presentation;

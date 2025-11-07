@@ -2,7 +2,7 @@
 Version=1.0
 Type=Application
 Name=iCloud Drive
-Comment=Access iCloud Drive in your browser
+Comment=Access iCloud Drive
 Icon=me.santisbon.iCloudServices.Drive
 Exec=/app/bin/launch-icloud.sh drive
 Categories=Network;FileTransfer;

@@ -2,7 +2,7 @@
 Version=1.0
 Type=Application
 Name=iCloud Contacts
-Comment=Access iCloud Contacts in your browser
+Comment=Access iCloud Contacts
 Icon=me.santisbon.iCloudServices.Contacts
 Exec=/app/bin/launch-icloud.sh contacts
 Categories=Office;ContactManagement;

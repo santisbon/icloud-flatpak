@@ -2,7 +2,7 @@
 Version=1.0
 Type=Application
 Name=iCloud Calendar
-Comment=Access iCloud Calendar in your browser
+Comment=Access iCloud Calendar
 Icon=me.santisbon.iCloudServices.Calendar
 Exec=/app/bin/launch-icloud.sh calendar
 Categories=Office;Calendar;

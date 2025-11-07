@@ -2,7 +2,7 @@
 Version=1.0
 Type=Application
 Name=iCloud Photos
-Comment=Access iCloud Photos in your browser
+Comment=Access iCloud Photos
 Icon=me.santisbon.iCloudServices.Photos
 Exec=/app/bin/launch-icloud.sh photos
 Categories=Graphics;Photography;
