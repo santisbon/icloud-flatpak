@@ -8,10 +8,6 @@ output-*/
 # Flatpak bundles
 *.flatpak
 
-# Downloaded icons (user must download these)
-icons/*.png
-!icons/.gitkeep
-
 # Build artifacts
 *.tar.gz
 *.tar.xz
