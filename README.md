@@ -74,7 +74,7 @@ Quick summary:
 
 4. **Install locally for testing:**
    ```bash
-   flatpak-builder --user --install --force-clean build-dir me.santisbon.iCloudServices.yaml
+   flatpak-builder --force-clean --user --install build-dir me.santisbon.iCloudServices.yaml
    ```
 
 ### Build with Custom Build Directory
