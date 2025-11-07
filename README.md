@@ -18,7 +18,8 @@ A Flatpak application that provides individual desktop launchers for iCloud web 
   - iCloud Find My
 
 - Uses Chromium browser in app mode for a clean, native-like interface
-- Each service runs in app mode with a shared profile (log in once, access all services)
+- Each service runs as a separate application with its own dock icon
+- Log in once per service (authentication persists across sessions)
 - Native desktop integration with proper icons and categories
 
 ## Prerequisites
@@ -113,21 +114,18 @@ flatpak install --user icloud-services.flatpak
 - [ ] All desktop launchers appear in application menu
 - [ ] Icons display correctly
 - [ ] Each service launches Chromium in app mode (no address bar)
+- [ ] Each service has its own dock icon (not grouped together)
 - [ ] iCloud services load properly
-- [ ] Login persists across sessions (shared profile for all services)
-- [ ] Can access multiple services without re-authentication
+- [ ] Login persists across sessions for each service
 - [ ] Network connectivity works
 - [ ] File uploads/downloads work (Drive, Photos)
 
 ### Known Limitations
 
-**Window Grouping:** Each service uses a unique `StartupWMClass` (e.g., `icloud-mail`, `icloud-drive`) to help desktop environments treat them as separate applications. However, since all services ultimately launch Chromium, window management behavior may vary depending on:
-
-- Your desktop environment (GNOME, KDE, etc.)
-- Whether Chromium's `--app` mode creates distinct window classes
-- Desktop compositor settings
-
-In some cases, all iCloud windows may still group together in the taskbar. This is a fundamental limitation of using a browser as the backend for multiple "apps."
+**Separate Logins Required:** Each iCloud service runs as a separate Chromium app with its own profile to ensure separate dock icons. This means you'll need to log in to iCloud once for each service you use. However:
+- Logins persist across sessions (you only log in once per service)
+- Each service maintains its own separate dock icon
+- Services can run simultaneously without interference
 
 ## Troubleshooting
 
@@ -147,17 +145,25 @@ flatpak install --user flathub org.chromium.Chromium
 
 ### Logout / Clear Data
 
-All services share Chromium's default profile. To logout of all iCloud services, you'll need to clear Chromium's browser data:
-1. Open any iCloud service
+Each service has its own Chromium profile. To logout of a specific service:
+```bash
+# Logout of Mail only
+rm -rf ~/.var/app/org.chromium.Chromium/config/icloud-mail
+
+# Logout of Drive only
+rm -rf ~/.var/app/org.chromium.Chromium/config/icloud-drive
+```
+
+To logout of all iCloud services at once:
+```bash
+rm -rf ~/.var/app/org.chromium.Chromium/config/icloud-*
+```
+
+Alternatively, clear cookies from within each service:
+1. Open the iCloud service
 2. Click the menu (three dots) in Chromium
 3. Go to Settings → Privacy and security → Clear browsing data
-4. Select "Cookies and other site data" and clear for icloud.com
-
-Alternatively, to completely reset Chromium's profile:
-```bash
-rm -rf ~/.var/app/org.chromium.Chromium/
-```
-**Warning:** This will clear all Chromium data, not just iCloud.
+4. Select "Cookies and other site data" for icloud.com
 
 ### Desktop Files Not Appearing
 

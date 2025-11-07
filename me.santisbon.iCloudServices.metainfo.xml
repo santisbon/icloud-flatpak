@@ -18,7 +18,7 @@
     <ul>
       <li>Individual launchers for Mail, Drive, Calendar, Contacts, Photos, Notes, Reminders, Pages, Numbers, Keynote, and Find My</li>
       <li>Clean app-like interface with no browser UI elements</li>
-      <li>Shared profile across all services - log in once, access everything</li>
+      <li>Each service has its own dock icon and persistent login</li>
       <li>Native desktop integration with proper icons and application categories</li>
     </ul>
     <p>
