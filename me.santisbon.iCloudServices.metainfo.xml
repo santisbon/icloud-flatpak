@@ -11,13 +11,13 @@
   <description>
     <p>
       iCloud Services provides native desktop integration for Apple's iCloud web services.
-      Each service launches in a dedicated Epiphany (GNOME Web) browser window using WebKit
-      for full compatibility with iCloud's web interface.
+      Each service launches in a dedicated Chromium browser window in app mode (no address bar)
+      for a clean, native-like experience.
     </p>
     <p>Features:</p>
     <ul>
       <li>Individual launchers for Mail, Drive, Calendar, Contacts, Photos, Notes, Reminders, Pages, Numbers, Keynote, and Find My</li>
-      <li>WebKit-based rendering through Epiphany for full iCloud compatibility</li>
+      <li>Clean app-like interface with no browser UI elements</li>
       <li>Shared profile across all services - log in once, access everything</li>
       <li>Native desktop integration with proper icons and application categories</li>
     </ul>
@@ -29,7 +29,7 @@
 
   <screenshots>
     <screenshot type="default">
-      <caption>iCloud Mail in Epiphany browser</caption>
+      <caption>iCloud Mail in Chromium app mode</caption>
     </screenshot>
   </screenshots>
 
@@ -70,7 +70,7 @@
   <launchable type="desktop-id">me.santisbon.iCloudServices.Find.desktop</launchable>
 
   <requires>
-    <id>org.gnome.Epiphany</id>
+    <id>org.chromium.Chromium</id>
   </requires>
 
   <supports>

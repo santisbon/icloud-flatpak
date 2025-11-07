@@ -1,7 +1,7 @@
 id: me.santisbon.iCloudServices
-runtime: org.gnome.Platform
-runtime-version: '49'
-sdk: org.gnome.Sdk
+runtime: org.freedesktop.Platform
+runtime-version: '25.08'
+sdk: org.freedesktop.Sdk
 command: launch-icloud.sh
 
 finish-args:

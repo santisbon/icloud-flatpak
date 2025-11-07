@@ -44,8 +44,7 @@ case "$SERVICE" in
         ;;
 esac
 
-# Launch Epiphany with the specific iCloud URL
-# All services share ONE profile so you only log in once
-# Epiphany must be installed separately: flatpak install flathub org.gnome.Epiphany
-# Use -- to separate options from arguments to prevent URL being treated as search
-exec flatpak-spawn --host flatpak run org.gnome.Epiphany -- $URL
+# Launch Chromium in app mode (no address bar, looks like native app)
+# All services share Chromium's default profile so you only log in once
+# Chromium must be installed separately: flatpak install flathub org.chromium.Chromium
+exec flatpak-spawn --host flatpak run org.chromium.Chromium --app="$URL"
