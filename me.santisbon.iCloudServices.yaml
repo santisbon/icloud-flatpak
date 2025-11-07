@@ -16,28 +16,28 @@ modules:
     build-commands:
       - install -Dm755 scripts/launch-icloud.sh /app/bin/launch-icloud.sh
       - install -Dm644 me.santisbon.iCloudServices.metainfo.xml /app/share/metainfo/me.santisbon.iCloudServices.metainfo.xml
-      - install -Dm644 desktop-files/com.apple.icloud.Mail.desktop /app/share/applications/com.apple.icloud.Mail.desktop
-      - install -Dm644 desktop-files/com.apple.icloud.Contacts.desktop /app/share/applications/com.apple.icloud.Contacts.desktop
-      - install -Dm644 desktop-files/com.apple.icloud.Calendar.desktop /app/share/applications/com.apple.icloud.Calendar.desktop
-      - install -Dm644 desktop-files/com.apple.icloud.Photos.desktop /app/share/applications/com.apple.icloud.Photos.desktop
-      - install -Dm644 desktop-files/com.apple.icloud.Drive.desktop /app/share/applications/com.apple.icloud.Drive.desktop
-      - install -Dm644 desktop-files/com.apple.icloud.Notes.desktop /app/share/applications/com.apple.icloud.Notes.desktop
-      - install -Dm644 desktop-files/com.apple.icloud.Reminders.desktop /app/share/applications/com.apple.icloud.Reminders.desktop
-      - install -Dm644 desktop-files/com.apple.icloud.Pages.desktop /app/share/applications/com.apple.icloud.Pages.desktop
-      - install -Dm644 desktop-files/com.apple.icloud.Numbers.desktop /app/share/applications/com.apple.icloud.Numbers.desktop
-      - install -Dm644 desktop-files/com.apple.icloud.Keynote.desktop /app/share/applications/com.apple.icloud.Keynote.desktop
-      - install -Dm644 desktop-files/com.apple.icloud.Find.desktop /app/share/applications/com.apple.icloud.Find.desktop
-      - install -Dm644 icons/mail.png /app/share/icons/hicolor/256x256/apps/com.apple.icloud.Mail.png
-      - install -Dm644 icons/contacts.png /app/share/icons/hicolor/256x256/apps/com.apple.icloud.Contacts.png
-      - install -Dm644 icons/calendar.png /app/share/icons/hicolor/256x256/apps/com.apple.icloud.Calendar.png
-      - install -Dm644 icons/photos.png /app/share/icons/hicolor/256x256/apps/com.apple.icloud.Photos.png
-      - install -Dm644 icons/drive.png /app/share/icons/hicolor/256x256/apps/com.apple.icloud.Drive.png
-      - install -Dm644 icons/notes.png /app/share/icons/hicolor/256x256/apps/com.apple.icloud.Notes.png
-      - install -Dm644 icons/reminders.png /app/share/icons/hicolor/256x256/apps/com.apple.icloud.Reminders.png
-      - install -Dm644 icons/pages.png /app/share/icons/hicolor/256x256/apps/com.apple.icloud.Pages.png
-      - install -Dm644 icons/numbers.png /app/share/icons/hicolor/256x256/apps/com.apple.icloud.Numbers.png
-      - install -Dm644 icons/keynote.png /app/share/icons/hicolor/256x256/apps/com.apple.icloud.Keynote.png
-      - install -Dm644 icons/find.png /app/share/icons/hicolor/256x256/apps/com.apple.icloud.Find.png
+      - install -Dm644 desktop-files/me.santisbon.iCloudServices.Mail.desktop /app/share/applications/me.santisbon.iCloudServices.Mail.desktop
+      - install -Dm644 desktop-files/me.santisbon.iCloudServices.Contacts.desktop /app/share/applications/me.santisbon.iCloudServices.Contacts.desktop
+      - install -Dm644 desktop-files/me.santisbon.iCloudServices.Calendar.desktop /app/share/applications/me.santisbon.iCloudServices.Calendar.desktop
+      - install -Dm644 desktop-files/me.santisbon.iCloudServices.Photos.desktop /app/share/applications/me.santisbon.iCloudServices.Photos.desktop
+      - install -Dm644 desktop-files/me.santisbon.iCloudServices.Drive.desktop /app/share/applications/me.santisbon.iCloudServices.Drive.desktop
+      - install -Dm644 desktop-files/me.santisbon.iCloudServices.Notes.desktop /app/share/applications/me.santisbon.iCloudServices.Notes.desktop
+      - install -Dm644 desktop-files/me.santisbon.iCloudServices.Reminders.desktop /app/share/applications/me.santisbon.iCloudServices.Reminders.desktop
+      - install -Dm644 desktop-files/me.santisbon.iCloudServices.Pages.desktop /app/share/applications/me.santisbon.iCloudServices.Pages.desktop
+      - install -Dm644 desktop-files/me.santisbon.iCloudServices.Numbers.desktop /app/share/applications/me.santisbon.iCloudServices.Numbers.desktop
+      - install -Dm644 desktop-files/me.santisbon.iCloudServices.Keynote.desktop /app/share/applications/me.santisbon.iCloudServices.Keynote.desktop
+      - install -Dm644 desktop-files/me.santisbon.iCloudServices.Find.desktop /app/share/applications/me.santisbon.iCloudServices.Find.desktop
+      - install -Dm644 icons/me.santisbon.iCloudServices.Mail.png /app/share/icons/hicolor/256x256/apps/me.santisbon.iCloudServices.Mail.png
+      - install -Dm644 icons/me.santisbon.iCloudServices.Contacts.png /app/share/icons/hicolor/256x256/apps/me.santisbon.iCloudServices.Contacts.png
+      - install -Dm644 icons/me.santisbon.iCloudServices.Calendar.png /app/share/icons/hicolor/256x256/apps/me.santisbon.iCloudServices.Calendar.png
+      - install -Dm644 icons/me.santisbon.iCloudServices.Photos.png /app/share/icons/hicolor/256x256/apps/me.santisbon.iCloudServices.Photos.png
+      - install -Dm644 icons/me.santisbon.iCloudServices.Drive.png /app/share/icons/hicolor/256x256/apps/me.santisbon.iCloudServices.Drive.png
+      - install -Dm644 icons/me.santisbon.iCloudServices.Notes.png /app/share/icons/hicolor/256x256/apps/me.santisbon.iCloudServices.Notes.png
+      - install -Dm644 icons/me.santisbon.iCloudServices.Reminders.png /app/share/icons/hicolor/256x256/apps/me.santisbon.iCloudServices.Reminders.png
+      - install -Dm644 icons/me.santisbon.iCloudServices.Pages.png /app/share/icons/hicolor/256x256/apps/me.santisbon.iCloudServices.Pages.png
+      - install -Dm644 icons/me.santisbon.iCloudServices.Numbers.png /app/share/icons/hicolor/256x256/apps/me.santisbon.iCloudServices.Numbers.png
+      - install -Dm644 icons/me.santisbon.iCloudServices.Keynote.png /app/share/icons/hicolor/256x256/apps/me.santisbon.iCloudServices.Keynote.png
+      - install -Dm644 icons/me.santisbon.iCloudServices.Find.png /app/share/icons/hicolor/256x256/apps/me.santisbon.iCloudServices.Find.png
     sources:
       - type: dir
         path: .

@@ -6,7 +6,7 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GNU GPL v3</project_license>
 
-  <icon type="stock">com.apple.icloud.Drive</icon>
+  <icon type="stock">me.santisbon.iCloudServices.Drive</icon>
 
   <description>
     <p>
@@ -16,7 +16,7 @@
     </p>
     <p>Features:</p>
     <ul>
-      <li>Individual launchers for Mail, Drive, Calendar, Contacts, Photos, Notes, Reminders, and Find My</li>
+      <li>Individual launchers for Mail, Drive, Calendar, Contacts, Photos, Notes, Reminders, Pages, Numbers, Keynote, and Find My</li>
       <li>WebKit-based rendering through Epiphany for full iCloud compatibility</li>
       <li>Shared profile across all services - log in once, access everything</li>
       <li>Native desktop integration with proper icons and application categories</li>
@@ -57,14 +57,17 @@
     </release>
   </releases>
 
-  <launchable type="desktop-id">com.apple.icloud.Mail.desktop</launchable>
-  <launchable type="desktop-id">com.apple.icloud.Drive.desktop</launchable>
-  <launchable type="desktop-id">com.apple.icloud.Calendar.desktop</launchable>
-  <launchable type="desktop-id">com.apple.icloud.Contacts.desktop</launchable>
-  <launchable type="desktop-id">com.apple.icloud.Photos.desktop</launchable>
-  <launchable type="desktop-id">com.apple.icloud.Notes.desktop</launchable>
-  <launchable type="desktop-id">com.apple.icloud.Reminders.desktop</launchable>
-  <launchable type="desktop-id">com.apple.icloud.Find.desktop</launchable>
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Mail.desktop</launchable>
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Drive.desktop</launchable>
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Calendar.desktop</launchable>
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Contacts.desktop</launchable>
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Photos.desktop</launchable>
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Notes.desktop</launchable>
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Reminders.desktop</launchable>
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Pages.desktop</launchable>
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Numbers.desktop</launchable>
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Keynote.desktop</launchable>
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Find.desktop</launchable>
 
   <requires>
     <id>org.gnome.Epiphany</id>
