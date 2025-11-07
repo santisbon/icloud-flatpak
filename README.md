@@ -1,6 +1,6 @@
 # iCloud Services for Linux
 
-A Flatpak application that provides individual desktop launchers for iCloud web services on Linux. Each iCloud service (Mail, Calendar, Drive, etc.) appears as a separate application in your desktop environment, launching in a built-in WebKit browser for the best compatibility with Apple services.
+A Flatpak application that provides individual desktop launchers for iCloud web services on Linux. Each iCloud service (Mail, Calendar, Drive, etc.) appears as a separate application in your desktop environment, launching in Chromium's app mode for a clean, native-like experience.
 
 ## Features
 
@@ -17,8 +17,8 @@ A Flatpak application that provides individual desktop launchers for iCloud web 
   - iCloud Keynote
   - iCloud Find My
 
-- Uses Epiphany (GNOME Web) browser with WebKit engine for full iCloud compatibility
-- Each service runs in application mode with a shared profile (log in once, access all services)
+- Uses Chromium browser in app mode for a clean, native-like interface
+- Each service runs in app mode with a shared profile (log in once, access all services)
 - Native desktop integration with proper icons and categories
 
 ## Prerequisites
@@ -42,18 +42,18 @@ A Flatpak application that provides individual desktop launchers for iCloud web 
    flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
    ```
 
-4. **GNOME Runtime and SDK**
+4. **Freedesktop Runtime and SDK**
    ```bash
-   flatpak install --user flathub org.gnome.Platform//49
-   flatpak install --user flathub org.gnome.Sdk//49
+   flatpak install --user flathub org.freedesktop.Platform//25.08
+   flatpak install --user flathub org.freedesktop.Sdk//25.08
    ```
 
-5. **Epiphany Browser** (required dependency)
+5. **Chromium Browser** (required dependency)
    ```bash
-   flatpak install --user flathub org.gnome.Epiphany
+   flatpak install --user flathub org.chromium.Chromium
    ```
 
-   **Note:** When installing via GNOME Software, KDE Discover, or Flathub web, Epiphany will be installed automatically. Manual installation is only needed when building from source or installing via command line.
+   **Note:** When installing via GNOME Software, KDE Discover, or Flathub web, Chromium will be installed automatically. Manual installation is only needed when building from source or installing via command line.
 
 ## Building
 
@@ -105,15 +105,15 @@ flatpak install --user icloud-services.flatpak
    - Open your application menu
    - Search for "iCloud"
    - Launch any service (Mail, Drive, etc.)
-   - Verify it opens in Epiphany
+   - Verify it opens in Chromium app mode (no address bar)
    - Log in to iCloud and test functionality
 
 ### Testing Checklist
 
 - [ ] All desktop launchers appear in application menu
 - [ ] Icons display correctly
-- [ ] Each service launches Epiphany in application mode
-- [ ] iCloud services load properly (WebKit compatibility)
+- [ ] Each service launches Chromium in app mode (no address bar)
+- [ ] iCloud services load properly
 - [ ] Login persists across sessions (shared profile for all services)
 - [ ] Can access multiple services without re-authentication
 - [ ] Network connectivity works
@@ -121,10 +121,10 @@ flatpak install --user icloud-services.flatpak
 
 ### Known Limitations
 
-**Window Grouping:** Each service uses a unique `StartupWMClass` (e.g., `icloud-mail`, `icloud-drive`) to help desktop environments treat them as separate applications. However, since all services ultimately launch Epiphany, window management behavior may vary depending on:
+**Window Grouping:** Each service uses a unique `StartupWMClass` (e.g., `icloud-mail`, `icloud-drive`) to help desktop environments treat them as separate applications. However, since all services ultimately launch Chromium, window management behavior may vary depending on:
 
 - Your desktop environment (GNOME, KDE, etc.)
-- Whether Epiphany's `--application-mode` creates distinct window classes
+- Whether Chromium's `--app` mode creates distinct window classes
 - Desktop compositor settings
 
 In some cases, all iCloud windows may still group together in the taskbar. This is a fundamental limitation of using a browser as the backend for multiple "apps."
@@ -138,19 +138,26 @@ If icons don't appear:
 gtk-update-icon-cache ~/.local/share/flatpak/exports/share/icons/hicolor
 ```
 
-### Epiphany Not Found
+### Chromium Not Found
 
-Ensure Epiphany is installed:
+Ensure Chromium is installed:
 ```bash
-flatpak install --user flathub org.gnome.Epiphany
+flatpak install --user flathub org.chromium.Chromium
 ```
 
 ### Logout / Clear Data
 
-All services share one profile. To logout of all iCloud services:
+All services share Chromium's default profile. To logout of all iCloud services, you'll need to clear Chromium's browser data:
+1. Open any iCloud service
+2. Click the menu (three dots) in Chromium
+3. Go to Settings → Privacy and security → Clear browsing data
+4. Select "Cookies and other site data" and clear for icloud.com
+
+Alternatively, to completely reset Chromium's profile:
 ```bash
-rm -rf ~/.var/app/me.santisbon.iCloudServices/data/icloud
+rm -rf ~/.var/app/org.chromium.Chromium/
 ```
+**Warning:** This will clear all Chromium data, not just iCloud.
 
 ### Desktop Files Not Appearing
 
@@ -164,9 +171,9 @@ update-desktop-database ~/.local/share/flatpak/exports/share/applications
 The app requires these minimal permissions:
 - `--share=ipc` - Inter-process communication for X11 compatibility
 - `--socket=wayland` / `--socket=fallback-x11` - Desktop environment integration
-- `--talk-name=org.freedesktop.Flatpak` - Permission to spawn Epiphany as a separate Flatpak
+- `--talk-name=org.freedesktop.Flatpak` - Permission to spawn Chromium as a separate Flatpak
 
-Note: Network access, GPU, and other browser permissions are handled by Epiphany running in its own sandbox.
+Note: Network access, GPU, and other browser permissions are handled by Chromium running in its own sandbox.
 
 ## Uninstalling
 
@@ -205,8 +212,8 @@ For issues and contributions, please refer to the project repository.
 
 - [FLATHUB.md](FLATHUB.md) - Guide for publishing to Flathub
 - [MULTI-ARCH.md](MULTI-ARCH.md) - Multi-architecture build instructions
-- [Epiphany](https://flathub.org/en/apps/org.gnome.Epiphany) ([manifest](https://github.com/flathub/org.gnome.Epiphany/blob/master/org.gnome.Epiphany.json)) - Base app
-- [GNOME Runtime](https://release.gnome.org/calendar/) releases
+- [Chromium](https://flathub.org/en/apps/org.chromium.Chromium) - Browser backend
+- [Freedesktop Runtime](https://docs.flatpak.org/en/latest/available-runtimes.html) documentation
 
 ## Next Steps:
 

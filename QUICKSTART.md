@@ -14,11 +14,11 @@ sudo dnf install flatpak flatpak-builder  # Fedora
 flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 # Install required runtimes
-flatpak install --user flathub org.gnome.Platform//49 org.gnome.Sdk//49
+flatpak install --user flathub org.freedesktop.Platform//25.08 org.freedesktop.Sdk//25.08
 
-# Install Epiphany (required for command-line builds)
+# Install Chromium (required for command-line builds)
 # Note: App centers install this automatically
-flatpak install --user flathub org.gnome.Epiphany
+flatpak install --user flathub org.chromium.Chromium
 ```
 
 ## Step 1: Build and Install
@@ -46,7 +46,7 @@ flatpak run me.santisbon.iCloudServices mail
 
 ## That's It!
 
-You now have iCloud service launchers on your Linux desktop. Each one opens in Epiphany with full WebKit compatibility.
+You now have iCloud service launchers on your Linux desktop. Each one opens in Chromium's app mode for a clean, native-like experience.
 
 ## Troubleshooting
 
@@ -60,14 +60,15 @@ gtk-update-icon-cache ~/.local/share/flatpak/exports/share/icons/hicolor
 update-desktop-database ~/.local/share/flatpak/exports/share/applications
 ```
 
-**Epiphany not found?**
+**Chromium not found?**
 ```bash
-flatpak install --user flathub org.gnome.Epiphany
+flatpak install --user flathub org.chromium.Chromium
 ```
 
 **Need to logout?**
+Clear Chromium's browser data for icloud.com from Chromium's settings, or completely reset:
 ```bash
-rm -rf ~/.var/app/me.santisbon.iCloudServices/data/icloud
+rm -rf ~/.var/app/org.chromium.Chromium/
 ```
 
 ## Next Steps

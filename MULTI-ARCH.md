@@ -51,8 +51,8 @@ This requires the arm64 SDK and runtime:
 
 ```bash
 # Install aarch64 platform
-flatpak install --user flathub org.gnome.Platform/aarch64/49
-flatpak install --user flathub org.gnome.Sdk/aarch64/49
+flatpak install --user flathub org.freedesktop.Platform/aarch64/25.08
+flatpak install --user flathub org.freedesktop.Sdk/aarch64/25.08
 
 # Build for aarch64
 flatpak-builder --arch=aarch64 --repo=repo --force-clean build-dir me.santisbon.iCloudServices.yaml
@@ -94,10 +94,10 @@ RUN dnf install -y \
 # Add Flathub repository
 RUN flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
-# Install GNOME Platform and SDK
+# Install Freedesktop Platform and SDK
 ARG FLATPAK_ARCH=x86_64
-RUN flatpak install -y --system flathub org.gnome.Platform/${FLATPAK_ARCH}/49 \
-    && flatpak install -y --system flathub org.gnome.Sdk/${FLATPAK_ARCH}/49
+RUN flatpak install -y --system flathub org.freedesktop.Platform/${FLATPAK_ARCH}/25.08 \
+    && flatpak install -y --system flathub org.freedesktop.Sdk/${FLATPAK_ARCH}/25.08
 
 WORKDIR /build
 
@@ -239,8 +239,8 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y flatpak flatpak-builder
         flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-        flatpak install -y flathub org.gnome.Platform//${{ matrix.arch }}/49
-        flatpak install -y flathub org.gnome.Sdk//${{ matrix.arch }}/49
+        flatpak install -y flathub org.freedesktop.Platform//${{ matrix.arch }}/25.08
+        flatpak install -y flathub org.freedesktop.Sdk//${{ matrix.arch }}/25.08
 
     - name: Build Flatpak
       run: |

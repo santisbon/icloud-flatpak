@@ -35,22 +35,22 @@ Flathub requires AppStream metadata. Create this file:
   <description>
     <p>
       iCloud Services provides native desktop integration for Apple's iCloud web services.
-      Each service launches in a dedicated Epiphany (GNOME Web) browser window using WebKit
-      for full compatibility.
+      Each service launches in a dedicated Chromium browser window in app mode (no address bar)
+      for a clean, native-like experience.
     </p>
     <p>Features:</p>
     <ul>
-      <li>Individual launchers for Mail, Drive, Calendar, Contacts, Photos, Notes, Reminders, and Find My</li>
-      <li>WebKit-based rendering through Epiphany for compatibility</li>
+      <li>Individual launchers for Mail, Drive, Calendar, Contacts, Photos, Notes, Reminders, Pages, Numbers, Keynote, and Find My</li>
+      <li>Clean app-like interface with no browser UI elements</li>
       <li>Shared profile across all services - log in once, access everything</li>
-      <li>Native desktop integration</li>
+      <li>Native desktop integration with proper icons and categories</li>
     </ul>
   </description>
 
   <screenshots>
     <screenshot type="default">
       <image>https://your-domain.com/screenshots/screenshot1.png</image>
-      <caption>iCloud Mail in Epiphany</caption>
+      <caption>iCloud Mail in Chromium app mode</caption>
     </screenshot>
     <screenshot>
       <image>https://your-domain.com/screenshots/screenshot2.png</image>
@@ -72,21 +72,26 @@ Flathub requires AppStream metadata. Create this file:
       <description>
         <p>Initial release</p>
         <ul>
-          <li>Support for iCloud services</li>
-          <li>WebKit compatibility via Epiphany</li>
+          <li>Support for all 11 iCloud services</li>
+          <li>Chromium app mode for clean interface</li>
+          <li>Individual desktop launchers for each service</li>
+          <li>Application mode for native-like experience</li>
         </ul>
       </description>
     </release>
   </releases>
 
-  <launchable type="desktop-id">com.apple.icloud.Mail.desktop</launchable>
-  <launchable type="desktop-id">com.apple.icloud.Drive.desktop</launchable>
-  <launchable type="desktop-id">com.apple.icloud.Calendar.desktop</launchable>
-  <launchable type="desktop-id">com.apple.icloud.Contacts.desktop</launchable>
-  <launchable type="desktop-id">com.apple.icloud.Photos.desktop</launchable>
-  <launchable type="desktop-id">com.apple.icloud.Notes.desktop</launchable>
-  <launchable type="desktop-id">com.apple.icloud.Reminders.desktop</launchable>
-  <launchable type="desktop-id">com.apple.icloud.Find.desktop</launchable>
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Mail.desktop</launchable>
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Drive.desktop</launchable>
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Calendar.desktop</launchable>
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Contacts.desktop</launchable>
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Photos.desktop</launchable>
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Notes.desktop</launchable>
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Reminders.desktop</launchable>
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Pages.desktop</launchable>
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Numbers.desktop</launchable>
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Keynote.desktop</launchable>
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Find.desktop</launchable>
 </component>
 ```
 
@@ -239,12 +244,12 @@ Once approved:
 This app uses minimal permissions following Flatpak best practices:
 - `--share=ipc` - Standard for desktop apps (X11 shared memory)
 - `--socket=wayland` / `--socket=fallback-x11` - Desktop environment integration
-- `--talk-name=org.freedesktop.Flatpak` - Permission to spawn Epiphany as a separate Flatpak
+- `--talk-name=org.freedesktop.Flatpak` - Permission to spawn Chromium as a separate Flatpak
 
-**External Dependency:** This app requires Epiphany to be installed separately:
-- Epiphany runs in its own sandbox with its own permissions
-- The launcher just spawns Epiphany windows with specific URLs
-- Network, GPU, and browser permissions are handled by Epiphany itself
+**External Dependency:** This app requires Chromium to be installed separately:
+- Chromium runs in its own sandbox with its own permissions
+- The launcher just spawns Chromium windows in app mode with specific URLs
+- Network, GPU, and browser permissions are handled by Chromium itself
 
 ## Flathub Guidelines
 
@@ -261,22 +266,22 @@ Since "iCloud" is an Apple trademark, you may need to:
 - Add clear disclaimers that this is unofficial
 - Be prepared for potential rejection or rename request
 
-### Epiphany Dependency
+### Chromium Dependency
 
-This app requires Epiphany to be installed. The `<requires>` tag in metainfo.xml ensures:
+This app requires Chromium to be installed. The `<requires>` tag in metainfo.xml ensures:
 
 **Automatic installation (app centers):**
-- GNOME Software, KDE Discover, and Flathub web will automatically install Epiphany
+- GNOME Software, KDE Discover, and Flathub web will automatically install Chromium
 - Users get both apps with one click
 
 **Manual installation (command line):**
-- Users must install: `flatpak install flathub org.gnome.Epiphany`
-- The launcher includes a check and provides helpful error messages if missing
+- Users must install: `flatpak install flathub org.chromium.Chromium`
+- The launcher provides helpful error messages if Chromium is missing
 
 **How it works:**
-- The launcher spawns Epiphany as a separate Flatpak process
-- iCloud requires WebKit for compatibility, which Epiphany provides
-- Each iCloud service opens in Epiphany's application mode
+- The launcher spawns Chromium as a separate Flatpak process
+- Each iCloud service opens in Chromium's app mode (no address bar)
+- Provides a clean, native-like application experience
 
 ### Icons Attribution
 
