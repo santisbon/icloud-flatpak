@@ -14,7 +14,7 @@ sudo dnf install flatpak flatpak-builder  # Fedora
 flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 # Install required runtimes
-flatpak install --user flathub org.gnome.Platform//47 org.gnome.Sdk//47
+flatpak install --user flathub org.gnome.Platform//49 org.gnome.Sdk//49
 
 # Install Epiphany (required dependency)
 flatpak install --user flathub org.gnome.Epiphany

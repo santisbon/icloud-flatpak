@@ -51,8 +51,8 @@ This requires the arm64 SDK and runtime:
 
 ```bash
 # Install aarch64 platform
-flatpak install --user flathub org.gnome.Platform/aarch64/47
-flatpak install --user flathub org.gnome.Sdk/aarch64/47
+flatpak install --user flathub org.gnome.Platform/aarch64/49
+flatpak install --user flathub org.gnome.Sdk/aarch64/49
 
 # Build for aarch64
 flatpak-builder --arch=aarch64 --repo=repo --force-clean build-dir me.santisbon.iCloudServices.yaml
@@ -96,8 +96,8 @@ RUN flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flath
 
 # Install GNOME Platform and SDK
 ARG FLATPAK_ARCH=x86_64
-RUN flatpak install -y --system flathub org.gnome.Platform/${FLATPAK_ARCH}/47 \
-    && flatpak install -y --system flathub org.gnome.Sdk/${FLATPAK_ARCH}/47
+RUN flatpak install -y --system flathub org.gnome.Platform/${FLATPAK_ARCH}/49 \
+    && flatpak install -y --system flathub org.gnome.Sdk/${FLATPAK_ARCH}/49
 
 WORKDIR /build
 
@@ -239,8 +239,8 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y flatpak flatpak-builder
         flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-        flatpak install -y flathub org.gnome.Platform//${{ matrix.arch }}/47
-        flatpak install -y flathub org.gnome.Sdk//${{ matrix.arch }}/47
+        flatpak install -y flathub org.gnome.Platform//${{ matrix.arch }}/49
+        flatpak install -y flathub org.gnome.Sdk//${{ matrix.arch }}/49
 
     - name: Build Flatpak
       run: |

@@ -13,8 +13,8 @@ RUN flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flath
 
 # Install GNOME Platform and SDK
 ARG FLATPAK_ARCH=x86_64
-RUN flatpak install -y --system flathub org.gnome.Platform/${FLATPAK_ARCH}/47 \
-    && flatpak install -y --system flathub org.gnome.Sdk/${FLATPAK_ARCH}/47
+RUN flatpak install -y --system flathub org.gnome.Platform/${FLATPAK_ARCH}/49 \
+    && flatpak install -y --system flathub org.gnome.Sdk/${FLATPAK_ARCH}/49
 
 WORKDIR /build
 

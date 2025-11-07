@@ -41,8 +41,8 @@ A Flatpak application that provides individual desktop launchers for iCloud web 
 
 4. **GNOME Runtime and SDK**
    ```bash
-   flatpak install --user flathub org.gnome.Platform//47
-   flatpak install --user flathub org.gnome.Sdk//47
+   flatpak install --user flathub org.gnome.Platform//49
+   flatpak install --user flathub org.gnome.Sdk//49
    ```
 
 5. **Epiphany Browser** (dependency)
