@@ -30,7 +30,7 @@ Flathub requires AppStream metadata. Create this file:
   <name>iCloud Services</name>
   <summary>Access iCloud web services on Linux</summary>
   <metadata_license>CC0-1.0</metadata_license>
-  <project_license>MIT</project_license>
+  <project_license>GNU GPL v3</project_license>
 
   <description>
     <p>
