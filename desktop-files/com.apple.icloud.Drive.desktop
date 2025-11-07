@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=iCloud Drive
+Comment=Access iCloud Drive in your browser
+Icon=com.apple.icloud.Drive
+Exec=/app/bin/launch-icloud.sh drive
+Categories=Network;FileTransfer;
+Terminal=false
+StartupNotify=true
+StartupWMClass=epiphany

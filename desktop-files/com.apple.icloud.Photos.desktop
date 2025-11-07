@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=iCloud Photos
+Comment=Access iCloud Photos in your browser
+Icon=com.apple.icloud.Photos
+Exec=/app/bin/launch-icloud.sh photos
+Categories=Graphics;Photography;
+Terminal=false
+StartupNotify=true
+StartupWMClass=epiphany

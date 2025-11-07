@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=iCloud Notes
+Comment=Access iCloud Notes in your browser
+Icon=com.apple.icloud.Notes
+Exec=/app/bin/launch-icloud.sh notes
+Categories=Office;TextEditor;
+Terminal=false
+StartupNotify=true
+StartupWMClass=epiphany

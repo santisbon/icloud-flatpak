@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>me.santisbon.iCloudServices</id>
+  <name>iCloud Services</name>
+  <summary>Access iCloud web services on Linux</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+
+  <description>
+    <p>
+      iCloud Services provides native desktop integration for Apple's iCloud web services.
+      Each service launches in a dedicated Epiphany (GNOME Web) browser window using WebKit
+      for full compatibility with iCloud's web interface.
+    </p>
+    <p>Features:</p>
+    <ul>
+      <li>Individual launchers for Mail, Drive, Calendar, Contacts, Photos, Notes, Reminders, and Find My</li>
+      <li>WebKit-based rendering through Epiphany for full iCloud compatibility</li>
+      <li>Isolated profiles for each service maintaining separate login sessions</li>
+      <li>Native desktop integration with proper icons and application categories</li>
+    </ul>
+    <p>
+      Note: This is an unofficial third-party application not affiliated with Apple Inc.
+      iCloud is a trademark of Apple Inc. Icons provided by Icons8 (https://icons8.com).
+    </p>
+  </description>
+
+  <screenshots>
+    <screenshot type="default">
+      <caption>iCloud Mail in Epiphany browser</caption>
+    </screenshot>
+  </screenshots>
+
+  <url type="homepage">https://github.com/santisbon/icloud-flatpak</url>
+  <url type="bugtracker">https://github.com/santisbon/icloud-flatpak/issues</url>
+
+  <developer_name>Armando C. Santisbon</developer_name>
+
+  <content_rating type="oars-1.1">
+    <content_attribute id="social-info">moderate</content_attribute>
+    <content_attribute id="money-purchasing">mild</content_attribute>
+  </content_rating>
+
+  <releases>
+    <release version="1.0.0" date="2025-01-15">
+      <description>
+        <p>Initial release</p>
+        <ul>
+          <li>Support for 8 iCloud services</li>
+          <li>WebKit compatibility via Epiphany browser</li>
+          <li>Individual desktop launchers for each service</li>
+          <li>Application mode for native-like experience</li>
+        </ul>
+      </description>
+    </release>
+  </releases>
+
+  <launchable type="desktop-id">com.apple.icloud.Mail.desktop</launchable>
+  <launchable type="desktop-id">com.apple.icloud.Drive.desktop</launchable>
+  <launchable type="desktop-id">com.apple.icloud.Calendar.desktop</launchable>
+  <launchable type="desktop-id">com.apple.icloud.Contacts.desktop</launchable>
+  <launchable type="desktop-id">com.apple.icloud.Photos.desktop</launchable>
+  <launchable type="desktop-id">com.apple.icloud.Notes.desktop</launchable>
+  <launchable type="desktop-id">com.apple.icloud.Reminders.desktop</launchable>
+  <launchable type="desktop-id">com.apple.icloud.Find.desktop</launchable>
+
+  <requires>
+    <id>org.gnome.Epiphany</id>
+  </requires>
+
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>touch</control>
+  </supports>
+</component>

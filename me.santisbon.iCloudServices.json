@@ -1,0 +1,48 @@
+{
+  "app-id": "me.santisbon.iCloudServices",
+  "runtime": "org.gnome.Platform",
+  "runtime-version": "47",
+  "sdk": "org.gnome.Sdk",
+  "command": "launch-icloud.sh",
+  "finish-args": [
+    "--share=ipc",
+    "--socket=fallback-x11",
+    "--socket=wayland",
+    "--device=dri",
+    "--share=network",
+    "--talk-name=org.freedesktop.Flatpak",
+    "--filesystem=xdg-run/app/org.gnome.Epiphany:create"
+  ],
+  "modules": [
+    {
+      "name": "icloud-services",
+      "buildsystem": "simple",
+      "build-commands": [
+        "install -Dm755 scripts/launch-icloud.sh /app/bin/launch-icloud.sh",
+        "install -Dm644 me.santisbon.iCloudServices.metainfo.xml /app/share/metainfo/me.santisbon.iCloudServices.metainfo.xml",
+        "install -Dm644 desktop-files/com.apple.icloud.Mail.desktop /app/share/applications/com.apple.icloud.Mail.desktop",
+        "install -Dm644 desktop-files/com.apple.icloud.Drive.desktop /app/share/applications/com.apple.icloud.Drive.desktop",
+        "install -Dm644 desktop-files/com.apple.icloud.Calendar.desktop /app/share/applications/com.apple.icloud.Calendar.desktop",
+        "install -Dm644 desktop-files/com.apple.icloud.Contacts.desktop /app/share/applications/com.apple.icloud.Contacts.desktop",
+        "install -Dm644 desktop-files/com.apple.icloud.Photos.desktop /app/share/applications/com.apple.icloud.Photos.desktop",
+        "install -Dm644 desktop-files/com.apple.icloud.Notes.desktop /app/share/applications/com.apple.icloud.Notes.desktop",
+        "install -Dm644 desktop-files/com.apple.icloud.Reminders.desktop /app/share/applications/com.apple.icloud.Reminders.desktop",
+        "install -Dm644 desktop-files/com.apple.icloud.Find.desktop /app/share/applications/com.apple.icloud.Find.desktop",
+        "install -Dm644 icons/icloud-mail.png /app/share/icons/hicolor/128x128/apps/com.apple.icloud.Mail.png",
+        "install -Dm644 icons/icloud-drive.png /app/share/icons/hicolor/128x128/apps/com.apple.icloud.Drive.png",
+        "install -Dm644 icons/icloud-calendar.png /app/share/icons/hicolor/128x128/apps/com.apple.icloud.Calendar.png",
+        "install -Dm644 icons/icloud-contacts.png /app/share/icons/hicolor/128x128/apps/com.apple.icloud.Contacts.png",
+        "install -Dm644 icons/icloud-photos.png /app/share/icons/hicolor/128x128/apps/com.apple.icloud.Photos.png",
+        "install -Dm644 icons/icloud-notes.png /app/share/icons/hicolor/128x128/apps/com.apple.icloud.Notes.png",
+        "install -Dm644 icons/icloud-reminders.png /app/share/icons/hicolor/128x128/apps/com.apple.icloud.Reminders.png",
+        "install -Dm644 icons/icloud-find.png /app/share/icons/hicolor/128x128/apps/com.apple.icloud.Find.png"
+      ],
+      "sources": [
+        {
+          "type": "dir",
+          "path": "."
+        }
+      ]
+    }
+  ]
+}

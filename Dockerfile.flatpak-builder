@@ -1,0 +1,25 @@
+ARG ARCH=amd64
+FROM --platform=linux/${ARCH} fedora:39
+
+# Install Flatpak build tools
+RUN dnf install -y \
+    flatpak \
+    flatpak-builder \
+    git \
+    && dnf clean all
+
+# Add Flathub repository
+RUN flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+# Install GNOME Platform and SDK
+ARG FLATPAK_ARCH=x86_64
+RUN flatpak install -y flathub org.gnome.Platform/${FLATPAK_ARCH}/47 \
+    && flatpak install -y flathub org.gnome.Sdk/${FLATPAK_ARCH}/47
+
+WORKDIR /build
+
+# Set up entrypoint
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]

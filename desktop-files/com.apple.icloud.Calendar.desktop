@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=iCloud Calendar
+Comment=Access iCloud Calendar in your browser
+Icon=com.apple.icloud.Calendar
+Exec=/app/bin/launch-icloud.sh calendar
+Categories=Office;Calendar;
+Terminal=false
+StartupNotify=true
+StartupWMClass=epiphany
