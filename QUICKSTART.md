@@ -43,7 +43,7 @@ Before building, download 8 icons from Icons8:
 cd icloud-flatpak
 
 # Build and install in one command
-flatpak-builder --user --install --force-clean build-dir me.santisbon.iCloudServices.json
+flatpak-builder --user --install --force-clean build-dir me.santisbon.iCloudServices.yaml
 ```
 
 Wait 2-5 minutes for the build to complete.

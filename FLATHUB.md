@@ -94,12 +94,11 @@ Flathub requires AppStream metadata. Create this file:
 
 Add the metainfo file to your manifest build commands:
 
-```json
-"build-commands": [
-  "install -Dm755 scripts/launch-icloud.sh /app/bin/launch-icloud.sh",
-  "install -Dm644 me.santisbon.iCloudServices.metainfo.xml /app/share/metainfo/me.santisbon.iCloudServices.metainfo.xml",
-  ...existing commands...
-]
+```yaml
+build-commands:
+  - install -Dm755 scripts/launch-icloud.sh /app/bin/launch-icloud.sh
+  - install -Dm644 me.santisbon.iCloudServices.metainfo.xml /app/share/metainfo/me.santisbon.iCloudServices.metainfo.xml
+  # ...existing commands...
 ```
 
 ## Step 3: Validate Metadata
@@ -141,15 +140,12 @@ flatpak run org.freedesktop.appstream-glib validate /path/to/me.santisbon.iCloud
 
 4. **Update manifest to use archive source:**
 
-   Instead of `"type": "dir"`, use Git source:
-   ```json
-   "sources": [
-     {
-       "type": "archive",
-       "url": "https://github.com/santisbon/icloud-flatpak/archive/refs/tags/v1.0.0.tar.gz",
-       "sha256": "YOUR_SHA256_HASH"
-     }
-   ]
+   Instead of `type: dir`, use Git source:
+   ```yaml
+   sources:
+     - type: archive
+       url: https://github.com/santisbon/icloud-flatpak/archive/refs/tags/v1.0.0.tar.gz
+       sha256: YOUR_SHA256_HASH
    ```
 
    Get the SHA256:
@@ -176,7 +172,7 @@ flatpak run org.freedesktop.appstream-glib validate /path/to/me.santisbon.iCloud
    mkdir me.santisbon.iCloudServices
    cd me.santisbon.iCloudServices
    # Copy your manifest file here
-   cp /path/to/icloud-flatpak/me.santisbon.iCloudServices.json .
+   cp /path/to/icloud-flatpak/me.santisbon.iCloudServices.yaml .
    # Copy metainfo
    cp /path/to/icloud-flatpak/me.santisbon.iCloudServices.metainfo.xml .
    ```
@@ -276,7 +272,7 @@ If Flathub rejects due to trademark concerns, you can:
 1. **Host on your own repository:**
    ```bash
    # Set up a flat-repo
-   flatpak-builder --repo=repo --force-clean build-dir me.santisbon.iCloudServices.json
+   flatpak-builder --repo=repo --force-clean build-dir me.santisbon.iCloudServices.yaml
 
    # Users can install via:
    flatpak remote-add --user icloud-services https://yoursite.com/repo

@@ -40,7 +40,7 @@ jobs:
 
     - name: Build Flatpak
       run: |
-        flatpak-builder --arch=${{ matrix.arch }} --repo=repo --force-clean build-dir me.santisbon.iCloudServices.json
+        flatpak-builder --arch=${{ matrix.arch }} --repo=repo --force-clean build-dir me.santisbon.iCloudServices.yaml
 
     - name: Create Bundle
       run: |

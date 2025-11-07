@@ -6,7 +6,7 @@ ARCH=${FLATPAK_ARCH:-x86_64}
 echo "Building for architecture: $ARCH"
 
 # Build the Flatpak
-flatpak-builder --arch=$ARCH --repo=/output/repo --force-clean /build/build-dir /build/me.santisbon.iCloudServices.json
+flatpak-builder --arch=$ARCH --repo=/output/repo --force-clean /build/build-dir /build/me.santisbon.iCloudServices.yaml
 
 # Create bundle if requested
 if [ "$CREATE_BUNDLE" = "true" ]; then

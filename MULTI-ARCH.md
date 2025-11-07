@@ -42,7 +42,7 @@ Flatpak supports multiple architectures, and Flathub requires apps to be availab
 
 ```bash
 cd icloud-flatpak
-flatpak-builder --arch=x86_64 --repo=repo --force-clean build-dir me.santisbon.iCloudServices.json
+flatpak-builder --arch=x86_64 --repo=repo --force-clean build-dir me.santisbon.iCloudServices.yaml
 ```
 
 ### Build for aarch64 (Cross-compile on amd64)
@@ -55,7 +55,7 @@ flatpak install --user flathub org.gnome.Platform/aarch64/47
 flatpak install --user flathub org.gnome.Sdk/aarch64/47
 
 # Build for aarch64
-flatpak-builder --arch=aarch64 --repo=repo --force-clean build-dir me.santisbon.iCloudServices.json
+flatpak-builder --arch=aarch64 --repo=repo --force-clean build-dir me.santisbon.iCloudServices.yaml
 ```
 
 **Note:** Cross-compilation can be slow due to QEMU emulation.
@@ -64,8 +64,8 @@ flatpak-builder --arch=aarch64 --repo=repo --force-clean build-dir me.santisbon.
 
 ```bash
 # Build for both architectures
-flatpak-builder --arch=x86_64 --repo=repo --force-clean build-x86_64 me.santisbon.iCloudServices.json
-flatpak-builder --arch=aarch64 --repo=repo --force-clean build-aarch64 me.santisbon.iCloudServices.json
+flatpak-builder --arch=x86_64 --repo=repo --force-clean build-x86_64 me.santisbon.iCloudServices.yaml
+flatpak-builder --arch=aarch64 --repo=repo --force-clean build-aarch64 me.santisbon.iCloudServices.yaml
 
 # Create bundles
 flatpak build-bundle repo icloud-services-x86_64.flatpak me.santisbon.iCloudServices --arch=x86_64
@@ -121,7 +121,7 @@ ARCH=${FLATPAK_ARCH:-x86_64}
 echo "Building for architecture: $ARCH"
 
 # Build the Flatpak
-flatpak-builder --arch=$ARCH --repo=/output/repo --force-clean /build/build-dir /build/me.santisbon.iCloudServices.json
+flatpak-builder --arch=$ARCH --repo=/output/repo --force-clean /build/build-dir /build/me.santisbon.iCloudServices.yaml
 
 # Create bundle if requested
 if [ "$CREATE_BUNDLE" = "true" ]; then
@@ -244,11 +244,11 @@ jobs:
 
     - name: Build Flatpak
       run: |
-        flatpak-builder --arch=${{ matrix.arch }} --repo=repo --force-clean build-dir com.icloud.Services.json
+        flatpak-builder --arch=${{ matrix.arch }} --repo=repo --force-clean build-dir me.santisbon.iCloudServices.yaml
 
     - name: Create Bundle
       run: |
-        flatpak build-bundle repo icloud-services-${{ matrix.arch }}.flatpak com.icloud.Services --arch=${{ matrix.arch }}
+        flatpak build-bundle repo icloud-services-${{ matrix.arch }}.flatpak me.santisbon.iCloudServices --arch=${{ matrix.arch }}
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4

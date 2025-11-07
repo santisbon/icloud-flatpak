@@ -72,18 +72,18 @@ Quick summary:
 
 3. **Build the Flatpak:**
    ```bash
-   flatpak-builder --force-clean build-dir me.santisbon.iCloudServices.json
+   flatpak-builder --force-clean build-dir me.santisbon.iCloudServices.yaml
    ```
 
 4. **Install locally for testing:**
    ```bash
-   flatpak-builder --user --install --force-clean build-dir me.santisbon.iCloudServices.json
+   flatpak-builder --user --install --force-clean build-dir me.santisbon.iCloudServices.yaml
    ```
 
 ### Build with Custom Build Directory
 
 ```bash
-flatpak-builder --repo=repo --force-clean build-dir me.santisbon.iCloudServices.json
+flatpak-builder --repo=repo --force-clean build-dir me.santisbon.iCloudServices.yaml
 flatpak build-bundle repo icloud-services.flatpak me.santisbon.iCloudServices
 ```
 
@@ -172,7 +172,7 @@ flatpak uninstall --unused  # Remove unused runtimes
 
 Edit files in `desktop-files/` then rebuild:
 ```bash
-flatpak-builder --user --install --force-clean build-dir me.santisbon.iCloudServices.json
+flatpak-builder --user --install --force-clean build-dir me.santisbon.iCloudServices.yaml
 ```
 
 ### Adding New Services
@@ -205,7 +205,7 @@ For issues and contributions, please refer to the project repository.
 2. Build and test:
    ```sh
    cd icloud-flatpak
-   flatpak-builder --user --install --force-clean build-dir me.santisbon.iCloudServices.json
+   flatpak-builder --user --install --force-clean build-dir me.santisbon.iCloudServices.yaml
    flatpak run me.santisbon.iCloudServices mail
    ```
 3. Create GitHub repo at https://github.com/santisbon/icloud-flatpak
