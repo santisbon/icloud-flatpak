@@ -110,6 +110,16 @@ flatpak install --user icloud-services.flatpak
 - [ ] Network connectivity works
 - [ ] File uploads/downloads work (Drive, Photos)
 
+### Known Limitations
+
+**Window Grouping:** Each service uses a unique `StartupWMClass` (e.g., `icloud-mail`, `icloud-drive`) to help desktop environments treat them as separate applications. However, since all services ultimately launch Epiphany, window management behavior may vary depending on:
+
+- Your desktop environment (GNOME, KDE, etc.)
+- Whether Epiphany's `--application-mode` creates distinct window classes
+- Desktop compositor settings
+
+In some cases, all iCloud windows may still group together in the taskbar. This is a fundamental limitation of using a browser as the backend for multiple "apps."
+
 ## Troubleshooting
 
 ### Icons Not Showing

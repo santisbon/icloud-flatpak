@@ -8,4 +8,4 @@ Exec=/app/bin/launch-icloud.sh photos
 Categories=Graphics;Photography;
 Terminal=false
 StartupNotify=true
-StartupWMClass=epiphany
+StartupWMClass=icloud-photos

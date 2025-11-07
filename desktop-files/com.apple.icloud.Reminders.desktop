@@ -8,4 +8,4 @@ Exec=/app/bin/launch-icloud.sh reminders
 Categories=Office;ProjectManagement;
 Terminal=false
 StartupNotify=true
-StartupWMClass=epiphany
+StartupWMClass=icloud-reminders

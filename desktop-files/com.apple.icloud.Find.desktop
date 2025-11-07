@@ -8,4 +8,4 @@ Exec=/app/bin/launch-icloud.sh find
 Categories=Utility;
 Terminal=false
 StartupNotify=true
-StartupWMClass=epiphany
+StartupWMClass=icloud-find
