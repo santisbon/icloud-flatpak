@@ -16,7 +16,7 @@
     <ul>
       <li>Individual launchers for Mail, Drive, Calendar, Contacts, Photos, Notes, Reminders, and Find My</li>
       <li>WebKit-based rendering through Epiphany for full iCloud compatibility</li>
-      <li>Isolated profiles for each service maintaining separate login sessions</li>
+      <li>Shared profile across all services - log in once, access everything</li>
       <li>Native desktop integration with proper icons and application categories</li>
     </ul>
     <p>

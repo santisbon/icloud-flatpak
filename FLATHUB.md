@@ -42,7 +42,7 @@ Flathub requires AppStream metadata. Create this file:
     <ul>
       <li>Individual launchers for Mail, Drive, Calendar, Contacts, Photos, Notes, Reminders, and Find My</li>
       <li>WebKit-based rendering through Epiphany for compatibility</li>
-      <li>Isolated profiles for each service</li>
+      <li>Shared profile across all services - log in once, access everything</li>
       <li>Native desktop integration</li>
     </ul>
   </description>
