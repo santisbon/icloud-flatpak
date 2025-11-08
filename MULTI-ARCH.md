@@ -42,7 +42,7 @@ Flatpak supports multiple architectures, and Flathub requires apps to be availab
 
 ```bash
 cd icloud-flatpak
-flatpak-builder --arch=x86_64 --repo=repo --force-clean build-dir me.santisbon.iCloudServices.yaml
+flatpak-builder --force-clean --user --repo=repo build-dir --arch=x86_64 me.santisbon.iCloudServices.yaml
 ```
 
 ### Build for aarch64 (Cross-compile on amd64)
@@ -55,7 +55,7 @@ flatpak install --user flathub org.freedesktop.Platform/aarch64/25.08
 flatpak install --user flathub org.freedesktop.Sdk/aarch64/25.08
 
 # Build for aarch64
-flatpak-builder --arch=aarch64 --repo=repo --force-clean build-dir me.santisbon.iCloudServices.yaml
+flatpak-builder --force-clean --user --repo=repo build-dir --arch=aarch64 me.santisbon.iCloudServices.yaml
 ```
 
 **Note:** Cross-compilation can be slow due to QEMU emulation.
