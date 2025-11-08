@@ -223,11 +223,6 @@ For issues and contributions, please refer to the project repository.
 
 ## Next Steps:
 
-1. Build and test:
-   ```sh
-   cd icloud-flatpak
-   flatpak-builder --user --install --force-clean build-dir me.santisbon.iCloudServices.yaml
-   flatpak run me.santisbon.iCloudServices mail
-   ```
+1. Build for arm64 in addition to amd64
 2. Create GitHub repo at https://github.com/santisbon/icloud-flatpak
 3. Submit to Flathub (follow FLATHUB.md)
