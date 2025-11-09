@@ -1,6 +1,6 @@
 # iCloud Services for Linux
 
-A Flatpak application that provides individual desktop launchers for iCloud web services on Linux. Each iCloud service (Mail, Calendar, Drive, etc.) appears as a separate application in your desktop environment, launching in Chromium's app mode for a clean, native-like experience.
+Provides individual desktop launchers for iCloud web services on Linux. Each iCloud service (Mail, Photos, Drive, etc.) appears as a separate application in your desktop environment.
 
 ## Features
 
@@ -17,10 +17,10 @@ A Flatpak application that provides individual desktop launchers for iCloud web 
   - iCloud Keynote
   - iCloud Find My
 
-- Uses Chromium browser in app mode for a clean, native-like interface
-- Each service runs as a separate application with its own dock icon
-- Log in once per service (authentication persists across sessions)
-- Native desktop integration with proper icons and categories
+- Uses Chrome or Chromium browser in app mode for a clean, native-like interface.
+- Each service runs as a separate application with its own dock/task manager icon.
+- Log in once per service (authentication persists across sessions). Supports passkeys for Face ID login.
+- Native desktop integration with proper icons and categories.
 
 ## Prerequisites
 
@@ -49,12 +49,14 @@ A Flatpak application that provides individual desktop launchers for iCloud web 
    flatpak install --user flathub org.freedesktop.Sdk//25.08
    ```
 
-5. **Chromium Browser** (required dependency)
+5. **Chrome or Chromium Browser** (required dependency)
    ```bash
    flatpak install --user flathub org.chromium.Chromium
+   # OR
+   flatpak install --user flathub com.google.Chrome
    ```
 
-   **Note:** When installing via GNOME Software, KDE Discover, or Flathub web, Chromium will be installed automatically. Manual installation is only needed when building from source or installing via command line.
+   **Note:** You must install Chrome or Chromium manually. The app will detect which one is installed and use it automatically.
 
 ## Building
 
@@ -106,14 +108,14 @@ flatpak install --user icloud-services.flatpak
    - Open your application menu
    - Search for "iCloud"
    - Launch any service (Mail, Drive, etc.)
-   - Verify it opens in Chromium app mode (no address bar)
+   - Verify it opens in app mode (no address bar)
    - Log in to iCloud and test functionality
 
 ### Testing Checklist
 
 - [x] All desktop launchers appear in application menu
 - [x] Icons display correctly
-- [x] Each service launches Chromium in app mode (no address bar)
+- [x] Each service launches in app mode (no address bar)
 - [x] Each service has its own dock icon (not grouped together)
 - [x] iCloud services load properly
 - [x] Login persists across sessions for each service
@@ -122,8 +124,9 @@ flatpak install --user icloud-services.flatpak
 
 ### Known Limitations
 
-**Separate Logins Required:** Each iCloud service runs as a separate Chromium app with its own profile to ensure separate dock icons. This means you'll need to log in to iCloud once for each service you use. However:
+**Separate Logins Required:** Each iCloud service runs as a separate Chrome/Chromium app with its own profile to ensure separate dock icons. This means you'll need to log in to iCloud once for each service you use. However:
 - Logins persist across sessions (you only log in once per service)
+- You can log in with Face ID by using a passkey
 - Each service maintains its own separate dock icon
 - Services can run simultaneously without interference
 
@@ -136,9 +139,9 @@ If icons don't appear:
 gtk-update-icon-cache ~/.local/share/flatpak/exports/share/icons/hicolor
 ```
 
-### Chromium Not Found
+### Chrome/Chromium Not Found
 
-Ensure Chromium is installed:
+Ensure the browser is installed e.g.
 ```bash
 flatpak install --user flathub org.chromium.Chromium
 ```
