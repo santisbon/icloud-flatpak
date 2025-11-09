@@ -2,10 +2,6 @@
 
 This guide covers how to prepare your iCloud Services Flatpak for distribution, addressing common requirements for publishing platforms.
 
-## Already Fixed
-
-- **SPDX License Format**: Changed from "GNU GPL v3" to "GPL-3.0-or-later" in metainfo.xml
-
 ## Issues to Fix Before Distribution
 
 ### 1. Domain Verification

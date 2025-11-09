@@ -74,16 +74,14 @@ cd flatpak-repo
 # Initialize OSTree repository
 ostree --repo=repo init --mode=archive-z2
 
-# Create repository configuration
-cat > repo/config << 'EOF'
-[core]
-repo_version=1
-mode=archive-z2
+# Repository config is created automatically by ostree init
+# Verify it exists
+cat repo/config
 
-[remote "flathub"]
-url=https://dl.flathub.org/repo/
-gpg-verify=true
-EOF
+# Should show:
+# [core]
+# repo_version=1
+# mode=archive-z2
 ```
 
 ### Step 3: Build and Add Application to Repository
