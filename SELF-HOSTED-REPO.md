@@ -1,6 +1,6 @@
 # Self-Hosted Flatpak Repository
 
-This guide covers how to set up and maintain your own Flatpak repository for distributing iCloud Services, enabling automatic updates for users.
+This guide covers how to set up and maintain your own Flatpak repository for distributing multiple applications, enabling automatic updates for users.
 
 ## Overview
 
@@ -44,7 +44,7 @@ gpg --full-generate-key
 # - Kind: (1) RSA and RSA
 # - Key size: 4096
 # - Expiration: 0 (does not expire) or set your preference
-# - Real name: "iCloud Services Flatpak Repository"
+# - Real name: "Your Name Flatpak Repository"
 # - Email: your-email@example.com
 # - Comment: "Repository signing key"
 
@@ -54,13 +54,13 @@ gpg --list-secret-keys --keyid-format=long
 # Example output:
 # sec   rsa4096/ABCD1234EFGH5678 2025-11-09
 #       ABCD1234EFGH5678ABCD1234EFGH5678ABCD1234
-# uid   iCloud Services Flatpak Repository <your-email@example.com>
+# uid   Your Name Flatpak Repository <your-email@example.com>
 
 # Export public key (users will need this)
-gpg --export ABCD1234EFGH5678 > icloud-services.gpg
+gpg --export ABCD1234EFGH5678 > flatpak-repo.gpg
 
 # Export private key for backup (KEEP SECURE!)
-gpg --export-secret-keys ABCD1234EFGH5678 > icloud-services-private.gpg
+gpg --export-secret-keys ABCD1234EFGH5678 > flatpak-repo-private.gpg
 # Store this in a safe location (password manager, encrypted backup)
 ```
 
@@ -117,17 +117,17 @@ flatpak build-update-repo \
 
 ### Step 4: Create Repository Configuration File
 
-Create `icloud-services.flatpakrepo`:
+Create a `.flatpakrepo` file for your repository:
 
 ```bash
-cat > /path/to/flatpak-repo/icloud-services.flatpakrepo << 'EOF'
+cat > /path/to/flatpak-repo/santisbon-apps.flatpakrepo << 'EOF'
 [Flatpak Repo]
-Title=iCloud Services for Linux
+Title=Santisbon Applications
 Url=https://santisbon.me/flatpak/repo
-Homepage=https://github.com/santisbon/icloud-flatpak
-Comment=Access all your iCloud web services on Linux
-Description=Provides native desktop integration for iCloud Mail, Drive, Calendar, Photos, and more
-Icon=https://santisbon.me/flatpak/icloud-services-icon.png
+Homepage=https://santisbon.me/flatpak/
+Comment=Custom applications by Santisbon
+Description=A collection of custom Flatpak applications including iCloud Services and other utilities
+Icon=https://santisbon.me/flatpak/icon.png
 GPGKey=mQINBGcwMXYBEAC... (paste base64 encoded GPG key here)
 EOF
 ```
@@ -159,41 +159,51 @@ cat > index.html << 'EOF'
 <!DOCTYPE html>
 <html>
 <head>
-    <title>iCloud Services Flatpak Repository</title>
+    <title>Santisbon Flatpak Repository</title>
     <style>
         body { font-family: sans-serif; max-width: 800px; margin: 50px auto; padding: 20px; }
         code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; }
         pre { background: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; }
+        .app { border: 1px solid #ddd; padding: 15px; margin: 15px 0; border-radius: 5px; }
     </style>
 </head>
 <body>
-    <h1>iCloud Services Flatpak Repository</h1>
+    <h1>Santisbon Flatpak Repository</h1>
 
-    <p>Access all your iCloud web services on Linux with native desktop integration.</p>
+    <p>Custom Flatpak applications with automatic updates.</p>
 
-    <h2>Quick Install</h2>
+    <h2>Setup</h2>
     <pre><code># Add the repository
-flatpak remote-add --user --if-not-exists icloud-services https://santisbon.github.io/flatpak-repo/icloud-services.flatpakrepo
+flatpak remote-add --user --if-not-exists santisbon-apps https://santisbon.github.io/flatpak-repo/santisbon-apps.flatpakrepo
 
-# Install Chrome or Chromium
+# Update app list
+flatpak update</code></pre>
+
+    <h2>Available Applications</h2>
+
+    <div class="app">
+        <h3>iCloud Services</h3>
+        <p>Access all your iCloud web services on Linux with native desktop integration.</p>
+        <pre><code># Install prerequisites
 flatpak install --user flathub org.chromium.Chromium
 
-# Install iCloud Services
-flatpak install --user icloud-services me.santisbon.iCloudServices</code></pre>
+# Install
+flatpak install --user santisbon-apps me.santisbon.iCloudServices
 
-    <h2>Launch</h2>
-    <pre><code>flatpak run me.santisbon.iCloudServices mail
-flatpak run me.santisbon.iCloudServices drive
-# ... and 9 more services</code></pre>
+# Launch
+flatpak run me.santisbon.iCloudServices mail</code></pre>
+        <p><a href="https://github.com/santisbon/icloud-flatpak">Source Code</a></p>
+    </div>
+
+    <!-- Add more applications here as you publish them -->
 
     <h2>Updates</h2>
     <pre><code>flatpak update</code></pre>
 
-    <h2>More Information</h2>
+    <h2>Support</h2>
     <ul>
-        <li><a href="https://github.com/santisbon/icloud-flatpak">Source Code</a></li>
-        <li><a href="https://github.com/santisbon/icloud-flatpak/issues">Report Issues</a></li>
-        <li><a href="https://github.com/santisbon/icloud-flatpak#readme">Documentation</a></li>
+        <li><a href="https://github.com/santisbon">GitHub Profile</a></li>
+        <li><a href="https://santisbon.me">Website</a></li>
     </ul>
 </body>
 </html>
@@ -213,9 +223,10 @@ git push origin main
 
 Your repository will be available at: `https://santisbon.github.io/flatpak-repo/`
 
-Update the `.flatpakrepo` file URL:
+Update the `.flatpakrepo` file URLs to match GitHub Pages:
 ```ini
 Url=https://santisbon.github.io/flatpak-repo/repo
+Homepage=https://santisbon.github.io/flatpak-repo/
 ```
 
 ### Option B: Custom Domain
@@ -261,7 +272,7 @@ Repository available at: `https://santisbon.gitlab.io/flatpak-repo/`
 
 1. Create account at https://netlify.com
 2. Drag and drop your `flatpak-repo` folder
-3. Get URL: `https://icloud-services.netlify.app`
+3. Get URL: `https://santisbon-apps.netlify.app`
 4. (Optional) Configure custom domain
 
 ## Part 3: User Installation
@@ -286,40 +297,37 @@ sudo dnf install flatpak  # Fedora
 flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 ```
 
-### 3. Install Chrome or Chromium
-```bash
-flatpak install --user flathub org.chromium.Chromium
-```
-
-### 4. Add iCloud Services Repository
+### 3. Add Santisbon Apps Repository
 
 **Method 1: Using .flatpakrepo file (Recommended)**
 ```bash
-flatpak remote-add --user --if-not-exists icloud-services https://santisbon.me/flatpak/icloud-services.flatpakrepo
+flatpak remote-add --user --if-not-exists santisbon-apps https://santisbon.me/flatpak/santisbon-apps.flatpakrepo
 ```
 
 **Method 2: Manual setup**
 ```bash
 # Download GPG key
-wget https://santisbon.me/flatpak/icloud-services.gpg
+wget https://santisbon.me/flatpak/flatpak-repo.gpg
 
 # Import GPG key
-flatpak remote-add --user --gpg-import=icloud-services.gpg icloud-services https://santisbon.me/flatpak/repo
+flatpak remote-add --user --gpg-import=flatpak-repo.gpg santisbon-apps https://santisbon.me/flatpak/repo
 ```
 
-## Install iCloud Services
+## Browse Available Applications
 
 ```bash
-flatpak install --user icloud-services me.santisbon.iCloudServices
+flatpak remote-ls santisbon-apps
 ```
 
-## Usage
+## Install Applications
 
-Launch from your application menu, or:
+**Example: iCloud Services**
 ```bash
-flatpak run me.santisbon.iCloudServices mail
-flatpak run me.santisbon.iCloudServices drive
-flatpak run me.santisbon.iCloudServices calendar
+# Install any required dependencies first
+flatpak install --user flathub org.chromium.Chromium
+
+# Install the application
+flatpak install --user santisbon-apps me.santisbon.iCloudServices
 ```
 
 ## Updates
@@ -332,8 +340,11 @@ flatpak update
 ## Uninstall
 
 ```bash
+# Remove a specific application
 flatpak uninstall me.santisbon.iCloudServices
-flatpak remote-delete icloud-services
+
+# Remove the repository
+flatpak remote-delete santisbon-apps
 ```
 ```
 
@@ -519,27 +530,42 @@ gpg --edit-key ABCD1234EFGH5678
 # gpg> save
 
 # Re-export public key
-gpg --export ABCD1234EFGH5678 > icloud-services.gpg
+gpg --export ABCD1234EFGH5678 > flatpak-repo.gpg
 
 # Update .flatpakrepo file with new GPG key
 gpg --export ABCD1234EFGH5678 | base64 -w0
 
 # Users will need to re-add the repository or:
-flatpak remote-modify --gpg-import=icloud-services.gpg icloud-services
+flatpak remote-modify --gpg-import=flatpak-repo.gpg santisbon-apps
 ```
 
 ## Part 6: Multi-Application Repository
 
-Add more applications to the same repository:
+You can host multiple applications in the same repository. Users add your repository once and get access to all your apps.
+
+### Adding a Second Application
 
 ```bash
-# Build another app
+# Navigate to your second app project
+cd /path/to/your-second-app
+
+# Build for x86_64 and add to the SAME repository
 flatpak-builder \
   --arch=x86_64 \
   --repo=/path/to/flatpak-repo/repo \
   --gpg-sign=ABCD1234EFGH5678 \
+  --force-clean \
   build-x86_64 \
-  com.example.AnotherApp.yaml
+  me.santisbon.AnotherApp.yaml
+
+# Build for aarch64
+flatpak-builder \
+  --arch=aarch64 \
+  --repo=/path/to/flatpak-repo/repo \
+  --gpg-sign=ABCD1234EFGH5678 \
+  --force-clean \
+  build-aarch64 \
+  me.santisbon.AnotherApp.yaml
 
 # Update repository
 flatpak build-update-repo \
@@ -548,7 +574,37 @@ flatpak build-update-repo \
   /path/to/flatpak-repo/repo
 ```
 
-Users get all apps from one repository!
+### Update the Website
+
+Add the new app to your index.html:
+
+```html
+<div class="app">
+    <h3>Another App</h3>
+    <p>Description of your second application.</p>
+    <pre><code># Install
+flatpak install --user santisbon-apps me.santisbon.AnotherApp
+
+# Launch
+flatpak run me.santisbon.AnotherApp</code></pre>
+    <p><a href="https://github.com/santisbon/another-app">Source Code</a></p>
+</div>
+```
+
+### Deploy Updates
+
+```bash
+cd /path/to/flatpak-repo
+git add repo/
+git commit -m "Add AnotherApp to repository"
+git push origin main
+```
+
+Users automatically see the new app:
+```bash
+flatpak remote-ls santisbon-apps
+# Shows both me.santisbon.iCloudServices and me.santisbon.AnotherApp
+```
 
 ## Part 7: Troubleshooting
 
@@ -559,10 +615,10 @@ Users get all apps from one repository!
 **Solution**:
 ```bash
 # Re-download GPG key
-wget https://santisbon.me/flatpak/icloud-services.gpg
+wget https://santisbon.me/flatpak/flatpak-repo.gpg
 
 # Re-add repository
-flatpak remote-add --user --gpg-import=icloud-services.gpg --if-not-exists icloud-services https://santisbon.me/flatpak/repo
+flatpak remote-add --user --gpg-import=flatpak-repo.gpg --if-not-exists santisbon-apps https://santisbon.me/flatpak/repo
 ```
 
 ### Repository Won't Build
