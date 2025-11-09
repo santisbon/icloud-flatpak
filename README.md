@@ -220,15 +220,29 @@ iCloud is a trademark of Apple Inc. This is an unofficial third-party applicatio
 
 For issues and contributions, please refer to the project repository.
 
+## Distribution
+
+Choose how to distribute your application:
+
+### Option 1: GitHub Releases (Recommended)
+Distribute `.flatpak` bundles directly through GitHub Releases. Simple setup, no infrastructure needed.
+- [GITHUB-RELEASES.md](GITHUB-RELEASES.md) - Complete guide to GitHub Releases distribution
+
+### Option 2: Self-Hosted Flatpak Repository
+Host your own Flatpak repository for automatic updates. Can use GitHub Pages (free) or your own domain.
+- [SELF-HOSTED-REPO.md](SELF-HOSTED-REPO.md) - Complete guide to self-hosted repositories
+
+### Option 3: Flathub (Not Recommended)
+**Note**: Flathub may reject this application due to their [web wrapper policy](https://docs.flathub.org/docs/for-app-authors/requirements). See FLATHUB.md for details and requirements if attempting submission.
+- [FLATHUB.md](FLATHUB.md) - Flathub submission guide (may be rejected)
+
+### Preparation
+Before distributing, ensure your application meets all requirements:
+- [DISTRIBUTION-PREP.md](DISTRIBUTION-PREP.md) - Fix common issues and prepare for release
+
 ## See Also
 
-- [FLATHUB.md](FLATHUB.md) - Guide for publishing to Flathub
+- [QUICKSTART.md](QUICKSTART.md) - Quick build and install guide
 - [MULTI-ARCH.md](MULTI-ARCH.md) - Multi-architecture build instructions
 - [Chromium](https://flathub.org/en/apps/org.chromium.Chromium) - Browser backend
 - [Freedesktop Runtime](https://docs.flatpak.org/en/latest/available-runtimes.html) - [Releases](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/wikis/Releases)
-
-## Next Steps:
-
-1. Build for arm64 in addition to amd64
-2. Create GitHub repo at https://github.com/santisbon/icloud-flatpak
-3. Submit to Flathub (follow FLATHUB.md)

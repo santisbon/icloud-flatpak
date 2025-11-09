@@ -1,5 +1,19 @@
 # Publishing to Flathub
 
+> **WARNING**: This application will likely be **REJECTED** by Flathub due to their [web wrapper policy](https://docs.flathub.org/docs/for-app-authors/requirements).
+>
+> Flathub explicitly states: _"Submissions that are merely documentation, media-only content, fonts, firmware, **web wrappers**, shell extensions, or CLI utilities are rejected."_
+>
+> This application is fundamentally a web wrapper - it launches Chrome/Chromium with specific URLs in app mode.
+>
+> **Recommended alternatives**:
+> - [GitHub Releases](GITHUB-RELEASES.md) - Simple, direct distribution
+> - [Self-Hosted Repository](SELF-HOSTED-REPO.md) - Automatic updates for users
+>
+> This guide is provided for reference only.
+
+---
+
 This guide covers the complete workflow for submitting the iCloud Services Flatpak to Flathub, the primary repository for Flatpak applications.
 
 ## Prerequisites
