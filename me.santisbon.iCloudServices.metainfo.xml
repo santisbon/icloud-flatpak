@@ -11,17 +11,15 @@
   <description>
     <p>
       iCloud Services provides native desktop integration for Apple's iCloud web services.
-      Each service launches in a dedicated browser window in app mode (no address bar)
-      for a clean, native-like experience. You can use your password or 
-      sign in with a passkey to use your iPhone's Face ID.
+      Each service launches in a dedicated Chrome or Chromium window in App mode (no address bar)
+      for a clean, native-like experience.
     </p>
     <p>Features:</p>
     <ul>
       <li>Individual launchers for Mail, Contacts, Calendar, Photos, Drive, Notes, Reminders, Pages, Numbers, Keynote, and Find My</li>
       <li>Clean app-like interface with no browser UI elements</li>
-      <li>Each service has its own dock icon and persistent login</li>
+      <li>Each service has its own persistent login with support for Face ID by using a passkey</li>
       <li>Native desktop integration with proper icons and application categories</li>
-      <li>Biometric authentication with Face ID</li>
     </ul>
     <p>
       Note: This is an unofficial third-party application not affiliated with Apple Inc.
@@ -31,7 +29,12 @@
 
   <screenshots>
     <screenshot type="default">
-      <caption>iCloud Mail in Chromium app mode</caption>
+      <image>https://your-domain.com/screenshots/screenshot1.png</image>
+      <caption>Desktop integration with proper categories and icons</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://your-domain.com/screenshots/screenshot2.png</image>
+      <caption>Apps pinned to Task Manager</caption>
     </screenshot>
   </screenshots>
 
@@ -42,16 +45,16 @@
 
   <content_rating type="oars-1.1">
     <content_attribute id="social-info">moderate</content_attribute>
-    <content_attribute id="money-purchasing">mild</content_attribute>
   </content_rating>
 
   <releases>
-    <release version="1.0.0" date="2025-11-07">
+    <release version="1.0.0" date="2025-11-09">
       <description>
         <p>Initial release</p>
         <ul>
-          <li>Individual desktop launchers for each service</li>
-          <li>App mode for native-like experience</li>
+          <li>Support for all 11 iCloud services</li>
+          <li>Architectures: amd64 (most PCs) and arm64 (Apple Silicon with Asahi Linux, Raspberry Pi)</li>
+          <li>Debian/Ubuntu and Fedora</li>
         </ul>
       </description>
     </release>

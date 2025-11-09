@@ -1,6 +1,6 @@
 # Publishing to Flathub
 
-This guide covers the complete workflow for submitting your iCloud Services Flatpak to Flathub, the primary repository for Flatpak applications.
+This guide covers the complete workflow for submitting the iCloud Services Flatpak to Flathub, the primary repository for Flatpak applications.
 
 ## Prerequisites
 
@@ -22,78 +22,6 @@ This project uses the app ID `me.santisbon.iCloudServices` which follows the rev
 Flathub requires AppStream metadata. Create this file:
 
 **File: `me.santisbon.iCloudServices.metainfo.xml`** (already created)
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<component type="desktop-application">
-  <id>me.santisbon.iCloudServices</id>
-  <name>iCloud Services</name>
-  <summary>Access iCloud web services on Linux</summary>
-  <metadata_license>CC0-1.0</metadata_license>
-  <project_license>GNU GPL v3</project_license>
-
-  <description>
-    <p>
-      iCloud Services provides native desktop integration for Apple's iCloud web services.
-      Each service launches in a dedicated Chromium browser window in app mode (no address bar)
-      for a clean, native-like experience.
-    </p>
-    <p>Features:</p>
-    <ul>
-      <li>Individual launchers for Mail, Drive, Calendar, Contacts, Photos, Notes, Reminders, Pages, Numbers, Keynote, and Find My</li>
-      <li>Clean app-like interface with no browser UI elements</li>
-      <li>Shared profile across all services - log in once, access everything</li>
-      <li>Native desktop integration with proper icons and categories</li>
-    </ul>
-  </description>
-
-  <screenshots>
-    <screenshot type="default">
-      <image>https://your-domain.com/screenshots/screenshot1.png</image>
-      <caption>iCloud Mail in Chromium app mode</caption>
-    </screenshot>
-    <screenshot>
-      <image>https://your-domain.com/screenshots/screenshot2.png</image>
-      <caption>iCloud Drive</caption>
-    </screenshot>
-  </screenshots>
-
-  <url type="homepage">https://github.com/santisbon/icloud-flatpak</url>
-  <url type="bugtracker">https://github.com/santisbon/icloud-flatpak/issues</url>
-
-  <developer_name>Armando C. Santisbon</developer_name>
-
-  <content_rating type="oars-1.1">
-    <content_attribute id="social-info">moderate</content_attribute>
-  </content_rating>
-
-  <releases>
-    <release version="1.0.0" date="2025-01-15">
-      <description>
-        <p>Initial release</p>
-        <ul>
-          <li>Support for all 11 iCloud services</li>
-          <li>Chromium app mode for clean interface</li>
-          <li>Individual desktop launchers for each service</li>
-          <li>Application mode for native-like experience</li>
-        </ul>
-      </description>
-    </release>
-  </releases>
-
-  <launchable type="desktop-id">me.santisbon.iCloudServices.Mail.desktop</launchable>
-  <launchable type="desktop-id">me.santisbon.iCloudServices.Drive.desktop</launchable>
-  <launchable type="desktop-id">me.santisbon.iCloudServices.Calendar.desktop</launchable>
-  <launchable type="desktop-id">me.santisbon.iCloudServices.Contacts.desktop</launchable>
-  <launchable type="desktop-id">me.santisbon.iCloudServices.Photos.desktop</launchable>
-  <launchable type="desktop-id">me.santisbon.iCloudServices.Notes.desktop</launchable>
-  <launchable type="desktop-id">me.santisbon.iCloudServices.Reminders.desktop</launchable>
-  <launchable type="desktop-id">me.santisbon.iCloudServices.Pages.desktop</launchable>
-  <launchable type="desktop-id">me.santisbon.iCloudServices.Numbers.desktop</launchable>
-  <launchable type="desktop-id">me.santisbon.iCloudServices.Keynote.desktop</launchable>
-  <launchable type="desktop-id">me.santisbon.iCloudServices.Find.desktop</launchable>
-</component>
-```
 
 ## Step 2: Update Manifest
 
@@ -268,11 +196,7 @@ Since "iCloud" is an Apple trademark, you may need to:
 
 ### Chromium Dependency
 
-This app requires Chromium to be installed. The `<requires>` tag in metainfo.xml ensures:
-
-**Automatic installation (app centers):**
-- GNOME Software, KDE Discover, and Flathub web will automatically install Chromium
-- Users get both apps with one click
+This app requires Chrome or Chromium to be installed. The `<requires>` tag in metainfo.xml informs the user of this requirement.
 
 **Manual installation (command line):**
 - Users must install: `flatpak install flathub org.chromium.Chromium`
