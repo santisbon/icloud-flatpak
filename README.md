@@ -77,8 +77,11 @@ Provides individual desktop launchers for iCloud web services on Linux. Each iCl
 ```bash
 flatpak build-bundle repo icloud-services.flatpak me.santisbon.iCloudServices --runtime-repo=https://flathub.org/repo/flathub.flatpakrepo
 ```
-Now you can send the .flatpak file to someone and if they have the Flathub repository set up and a working network connection to install the runtime, they can install it with:
+Now you can send the .flatpak file to someone and if they have the Flathub repository set up and a working network connection to install the runtime/sdk, they can install iCloud with:
 ```bash
+flatpak install flathub org.freedesktop.Platform//25.08
+flatpak install flathub org.freedesktop.Sdk//25.08
+
 flatpak install --user icloud-services.flatpak
 ```
 
