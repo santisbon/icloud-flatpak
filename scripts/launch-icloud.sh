@@ -55,12 +55,26 @@ case "$SERVICE" in
         ;;
 esac
 
-# Launch Chromium in app mode with custom window class and separate profile
+# Detect which Chromium-based browser is installed
+if flatpak-spawn --host flatpak list --app | grep -q "com.google.Chrome"; then
+    BROWSER="com.google.Chrome"
+    DATA_DIR="$HOME/.var/app/com.google.Chrome/config/icloud-${SERVICE}"
+elif flatpak-spawn --host flatpak list --app | grep -q "org.chromium.Chromium"; then
+    BROWSER="org.chromium.Chromium"
+    DATA_DIR="$HOME/.var/app/org.chromium.Chromium/config/icloud-${SERVICE}"
+else
+    echo "Error: Neither Chrome nor Chromium is installed."
+    echo "Please install one of them:"
+    echo "  flatpak install flathub com.google.Chrome"
+    echo "  flatpak install flathub org.chromium.Chromium"
+    exit 1
+fi
+
+# Launch browser in app mode with custom window class and separate profile
 # --class flag sets WM_CLASS to match StartupWMClass in desktop files for proper icon matching
 # --user-data-dir creates separate profile per service for separate dock icons
 # Note: Each service needs its own login (one-time setup per service)
-# Chromium must be installed separately: flatpak install flathub org.chromium.Chromium
-exec flatpak-spawn --host flatpak run org.chromium.Chromium \
+exec flatpak-spawn --host flatpak run "$BROWSER" \
     --class="$WM_CLASS" \
-    --user-data-dir="$HOME/.var/app/org.chromium.Chromium/config/icloud-${SERVICE}" \
+    --user-data-dir="$DATA_DIR" \
     --app="$URL"
