@@ -73,8 +73,10 @@ fi
 # Launch browser in app mode with custom window class and separate profile
 # --class flag sets WM_CLASS to match StartupWMClass in desktop files for proper icon matching
 # --user-data-dir creates separate profile per service for separate dock icons
+# --ozone-platform=x11 forces X11/XWayland mode for proper window class handling on Wayland
 # Note: Each service needs its own login (one-time setup per service)
 exec flatpak-spawn --host flatpak run "$BROWSER" \
     --class="$WM_CLASS" \
     --user-data-dir="$DATA_DIR" \
+    --ozone-platform=x11 \
     --app="$URL"
