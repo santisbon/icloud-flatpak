@@ -29,7 +29,7 @@ This guide covers how to distribute your iCloud Services Flatpak application thr
 ### 1.1 Create Release Tag
 
 ```bash
-cd /home/armando/code/icloud-flatpak
+cd ~/code/icloud-flatpak
 
 # Ensure all changes are committed
 git status

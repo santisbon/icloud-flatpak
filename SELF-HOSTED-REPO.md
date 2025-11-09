@@ -88,7 +88,7 @@ cat repo/config
 
 ```bash
 # Navigate to your project
-cd /home/armando/code/icloud-flatpak
+cd ~/code/icloud-flatpak
 
 # Build for x86_64
 flatpak-builder \
@@ -353,7 +353,7 @@ flatpak remote-delete santisbon-apps
 ### Publishing a New Version
 
 ```bash
-cd /home/armando/code/icloud-flatpak
+cd ~/code/icloud-flatpak
 
 # Make your changes and commit
 git add .
