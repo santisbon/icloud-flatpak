@@ -346,7 +346,6 @@ flatpak uninstall me.santisbon.iCloudServices
 # Remove the repository
 flatpak remote-delete santisbon-apps
 ```
-```
 
 ## Part 4: Updating Your Repository
 
