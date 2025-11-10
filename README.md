@@ -210,15 +210,11 @@ flatpak-builder --user --install --force-clean build-dir me.santisbon.iCloudServ
 3. Download icon for new service
 4. Update manifest to install new desktop file and icon
 
-## License and Attribution
+## Disclaimer and Attribution
 
-This project is provided as-is.
+Disclaimer: This project is provided as-is, without any warranty or guarantee. Use at your own risk.
 
 iCloud is a trademark of Apple Inc. This is an unofficial third-party application not affiliated with Apple Inc. Icons by The Cross-Platform Organization (https://github.com/cross-platform) under GNU GPL v3.
-
-## Support
-
-For issues and contributions, please refer to the project repository.
 
 ## Distribution
 
