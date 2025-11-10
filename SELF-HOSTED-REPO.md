@@ -307,7 +307,7 @@ If you own `santisbon.me`:
 
 ```bash
 # Upload repository to your web server
-rsync -avz /path/to/flatpak-repo/ user@santisbon.me:/var/www/flatpak/
+rsync -avz ~/code/flatpak-repo/ user@santisbon.me:/var/www/flatpak/
 
 # Or use your hosting provider's upload method
 # Ensure files are served at: https://santisbon.me/flatpak/
@@ -556,11 +556,11 @@ jobs:
 
 ```bash
 # Check repository size
-du -sh /path/to/flatpak-repo/repo
+du -sh ~/code/flatpak-repo/repo
 
 # OSTree repositories grow over time
 # Clean old objects (keeps last 30 days)
-ostree --repo=/path/to/flatpak-repo/repo prune --refs-only --keep-younger-than="30 days ago"
+ostree --repo=~/code/flatpak-repo/repo prune --refs-only --keep-younger-than="30 days ago"
 ```
 
 ### Repository Statistics
@@ -569,13 +569,13 @@ Create a simple stats page:
 
 ```bash
 # Count commits in repository
-ostree --repo=/path/to/flatpak-repo/repo log me.santisbon.iCloudServices | grep "^commit" | wc -l
+ostree --repo=~/code/flatpak-repo/repo log me.santisbon.iCloudServices | grep "^commit" | wc -l
 
 # List all refs
-ostree --repo=/path/to/flatpak-repo/repo refs
+ostree --repo=~/code/flatpak-repo/repo refs
 
 # Get repository size
-du -sh /path/to/flatpak-repo/repo
+du -sh ~/code/flatpak-repo/repo
 ```
 
 ### Backup Repository
@@ -585,7 +585,7 @@ du -sh /path/to/flatpak-repo/repo
 gpg --export-secret-keys ABCD1234EFGH5678 > backup-gpg-private-key.asc
 
 # Backup entire repository
-tar czf flatpak-repo-backup-$(date +%Y%m%d).tar.gz /path/to/flatpak-repo/
+tar czf flatpak-repo-backup-$(date +%Y%m%d).tar.gz ~/code/flatpak-repo/
 
 # Upload to secure location
 # e.g., encrypted cloud storage, external drive, etc.
@@ -736,7 +736,7 @@ flatpak build-update-repo \
   --generate-static-deltas \
   --static-delta-ignore-ref=*.Debug \
   --gpg-sign=ABCD1234EFGH5678 \
-  /path/to/flatpak-repo/repo
+  ~/code/flatpak-repo/repo
 ```
 
 ## Comparison: GitHub Releases vs Self-Hosted Repository

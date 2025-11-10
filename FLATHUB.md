@@ -63,7 +63,7 @@ appstreamcli validate me.santisbon.iCloudServices.metainfo.xml
 
 Validate the built Flatpak:
 ```bash
-flatpak run org.freedesktop.appstream-glib validate /path/to/me.santisbon.iCloudServices.metainfo.xml
+flatpak run org.freedesktop.appstream-glib validate ~/code/icloud-flatpak/me.santisbon.iCloudServices.metainfo.xml
 ```
 
 ## Step 4: Prepare Your Repository
@@ -119,9 +119,9 @@ flatpak run org.freedesktop.appstream-glib validate /path/to/me.santisbon.iCloud
    mkdir me.santisbon.iCloudServices
    cd me.santisbon.iCloudServices
    # Copy your manifest file here
-   cp /path/to/icloud-flatpak/me.santisbon.iCloudServices.yaml .
+   cp ~/code/icloud-flatpak/me.santisbon.iCloudServices.yaml .
    # Copy metainfo
-   cp /path/to/icloud-flatpak/me.santisbon.iCloudServices.metainfo.xml .
+   cp ~/code/icloud-flatpak/me.santisbon.iCloudServices.metainfo.xml .
    ```
 
 4. **Commit and push:**
