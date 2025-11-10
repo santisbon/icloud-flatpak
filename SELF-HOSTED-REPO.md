@@ -2,6 +2,21 @@
 
 This guide covers how to set up and maintain your own Flatpak repository for distributing multiple applications, enabling automatic updates for users.
 
+## Repository Structure Overview
+
+**IMPORTANT**: You will work with TWO separate Git repositories:
+
+1. **Application Repository** (`icloud-flatpak/`): Your app source code
+   - Location: `~/code/icloud-flatpak` (or wherever you cloned it)
+   - Contains: Source code, manifest, build files
+   - Purpose: Build the Flatpak application
+
+2. **Hosting Repository** (`flatpak-repo/`): OSTree repository for distribution
+   - Location: `~/code/flatpak-repo` (separate directory)
+   - Contains: Built OSTree repository, website files, .flatpakrepo file
+   - Purpose: Host and distribute the built applications
+   - Hosted at: `https://github.com/santisbon/flatpak-repo`
+
 ## Overview
 
 **Advantages**:
@@ -18,6 +33,7 @@ This guide covers how to set up and maintain your own Flatpak repository for dis
 - Need to manage GPG keys
 - Bandwidth costs (though usually minimal)
 - Must maintain repository structure
+- Large files require Git LFS for GitHub hosting
 
 ## Prerequisites
 
@@ -64,11 +80,17 @@ gpg --export-secret-keys ABCD1234EFGH5678 > flatpak-repo-private.gpg
 # Store this in a safe location (password manager, encrypted backup)
 ```
 
-### Step 2: Initialize Repository
+### Step 2: Set Up Hosting Repository
+
+**IMPORTANT**: This step creates a SEPARATE Git repository for hosting.
 
 ```bash
-# Create repository directory
-mkdir -p flatpak-repo
+# Navigate to your code directory (NOT the application directory)
+cd ~/code  # or wherever you keep your projects
+
+# Clone your hosting repository from GitHub
+# (Create this repository on GitHub first if it doesn't exist)
+git clone git@github.com:santisbon/flatpak-repo.git
 cd flatpak-repo
 
 # Initialize OSTree repository
@@ -82,53 +104,72 @@ cat repo/config
 # [core]
 # repo_version=1
 # mode=archive-z2
+
+# Your directory structure is now:
+# ~/code/
+#   ├── icloud-flatpak/     # Application source code (one repo)
+#   └── flatpak-repo/       # Hosting repository (another repo)
+#       └── repo/           # OSTree repository
 ```
 
 ### Step 3: Build and Add Application to Repository
 
+**IMPORTANT**: You build FROM the application directory TO the hosting repository.
+
 ```bash
-# Navigate to your project
+# Navigate to your APPLICATION directory
 cd ~/code/icloud-flatpak
 
-# Build for x86_64
+# Build for x86_64 and add to hosting repository
+# The --repo flag points to the HOSTING repository (separate directory!)
 flatpak-builder \
   --arch=x86_64 \
-  --repo=/path/to/flatpak-repo/repo \
+  --repo=~/code/flatpak-repo/repo \
   --force-clean \
   --gpg-sign=ABCD1234EFGH5678 \
   build-x86_64 \
   me.santisbon.iCloudServices.yaml
 
-# Build for aarch64
+# Build for aarch64 and add to hosting repository
 flatpak-builder \
   --arch=aarch64 \
-  --repo=/path/to/flatpak-repo/repo \
+  --repo=~/code/flatpak-repo/repo \
   --force-clean \
   --gpg-sign=ABCD1234EFGH5678 \
   build-aarch64 \
   me.santisbon.iCloudServices.yaml
 
-# Update repository summary
+# Update repository summary (run this from anywhere)
 flatpak build-update-repo \
   --generate-static-deltas \
   --gpg-sign=ABCD1234EFGH5678 \
-  /path/to/flatpak-repo/repo
+  ~/code/flatpak-repo/repo
+
+# Important notes:
+# - You are IN ~/code/icloud-flatpak (application repo)
+# - You are building TO ~/code/flatpak-repo/repo (hosting repo)
+# - The build-x86_64 and build-aarch64 directories are created in icloud-flatpak (temporary)
+# - The output goes into flatpak-repo/repo (permanent)
 ```
 
 ### Step 4: Create Repository Configuration File
 
-Create a `.flatpakrepo` file for your repository:
+Create a `.flatpakrepo` file in your HOSTING repository:
 
 ```bash
-cat > /path/to/flatpak-repo/santisbon-apps.flatpakrepo << 'EOF'
+# Navigate to the HOSTING repository
+cd ~/code/flatpak-repo
+
+# Create the .flatpakrepo file (update the URL after deploying to GitHub Pages)
+cat > santisbon-apps.flatpakrepo << 'EOF'
 [Flatpak Repo]
 Title=Santisbon Applications
-Url=https://santisbon.me/flatpak/repo
-Homepage=https://santisbon.me/flatpak/
-Comment=Custom applications by Santisbon
-Description=A collection of custom Flatpak applications including iCloud Services and other utilities
-Icon=https://santisbon.me/flatpak/icon.png
-GPGKey=mQINBGcwMXYBEAC... (paste base64 encoded GPG key here)
+Url=https://santisbon.github.io/flatpak-repo/repo
+Homepage=https://santisbon.github.io/flatpak-repo/
+Comment=Applications by Santisbon
+Description=A collection of Flatpak applications including iCloud Services
+Icon=https://raw.githubusercontent.com/santisbon/flatpak-repo/main/icon.png
+GPGKey=PASTE_YOUR_BASE64_GPG_KEY_HERE
 EOF
 ```
 
@@ -137,7 +178,9 @@ To get the base64 encoded GPG key:
 gpg --export ABCD1234EFGH5678 | base64 -w0
 ```
 
-Paste the output (single line) after `GPGKey=`
+Paste the output (single line) after `GPGKey=` in the .flatpakrepo file.
+
+**Your .flatpakrepo file is now in**: `~/code/flatpak-repo/santisbon-apps.flatpakrepo`
 
 ## Part 2: Hosting Options
 
@@ -145,14 +188,33 @@ Paste the output (single line) after `GPGKey=`
 
 **Advantages**: Free, HTTPS included, good bandwidth, easy setup
 
-```bash
-# Create separate repository for hosting
-cd ~
-git clone https://github.com/santisbon/flatpak-repo.git
-cd flatpak-repo
+**Requirements**: Git LFS (Large File Storage) for files over 100MB
 
-# Copy repository files
-cp -r /path/to/flatpak-repo/* .
+**Setup Steps**:
+
+```bash
+# You should already be in ~/code/flatpak-repo from previous steps
+cd ~/code/flatpak-repo
+
+# Install Git LFS if not already installed
+sudo apt install git-lfs  # Debian/Ubuntu
+# OR
+sudo dnf install git-lfs  # Fedora
+
+# Initialize Git LFS in this repository
+git lfs install
+
+# Track large OSTree object files with LFS
+git lfs track "repo/objects/**/*.filez"
+git lfs track "repo/objects/**/*.file"
+
+# Add .gitattributes (created by git lfs track)
+git add .gitattributes
+
+# Create .gitignore to exclude temporary files
+cat > .gitignore << 'EOF'
+repo/.lock
+EOF
 
 # Create index.html for repository homepage
 cat > index.html << 'EOF'
@@ -209,25 +271,35 @@ flatpak run me.santisbon.iCloudServices mail</code></pre>
 </html>
 EOF
 
-# Commit and push
+# Commit and push to GitHub
+# Git LFS will automatically upload large files
 git add .
-git commit -m "Initial flatpak repository"
+git commit -m "Add iCloud Services to repository with Git LFS"
 git push origin main
+
+# This will upload:
+# - Small files normally
+# - Large files via Git LFS (you'll see "Uploading LFS objects")
+# - May take several minutes for large files
 
 # Enable GitHub Pages
 # Go to: https://github.com/santisbon/flatpak-repo/settings/pages
 # Source: Deploy from a branch
-# Branch: main / (root)
-# Save
+# Branch: main
+# Folder: / (root)
+# Click Save
+# Wait a few minutes for GitHub Pages to deploy
 ```
 
 Your repository will be available at: `https://santisbon.github.io/flatpak-repo/`
 
-Update the `.flatpakrepo` file URLs to match GitHub Pages:
+The URLs in your `santisbon-apps.flatpakrepo` file should already be correct:
 ```ini
 Url=https://santisbon.github.io/flatpak-repo/repo
 Homepage=https://santisbon.github.io/flatpak-repo/
 ```
+
+**IMPORTANT**: See [GIT-LFS.md](GIT-LFS.md) for detailed Git LFS documentation if you encounter issues.
 
 ### Option B: Custom Domain
 
@@ -352,6 +424,7 @@ flatpak remote-delete santisbon-apps
 ### Publishing a New Version
 
 ```bash
+# Step 1: Update your APPLICATION repository
 cd ~/code/icloud-flatpak
 
 # Make your changes and commit
@@ -360,12 +433,13 @@ git commit -m "Version 1.1.0: New features"
 git tag -a v1.1.0 -m "Release v1.1.0"
 git push origin main v1.1.0
 
-# Update metainfo.xml with new release entry
+# Update metainfo.xml with new release entry before building
 
-# Rebuild and publish to repository
+# Step 2: Rebuild and publish to HOSTING repository
+# (Still in ~/code/icloud-flatpak directory)
 flatpak-builder \
   --arch=x86_64 \
-  --repo=/path/to/flatpak-repo/repo \
+  --repo=~/code/flatpak-repo/repo \
   --force-clean \
   --gpg-sign=ABCD1234EFGH5678 \
   build-x86_64 \
@@ -373,7 +447,7 @@ flatpak-builder \
 
 flatpak-builder \
   --arch=aarch64 \
-  --repo=/path/to/flatpak-repo/repo \
+  --repo=~/code/flatpak-repo/repo \
   --force-clean \
   --gpg-sign=ABCD1234EFGH5678 \
   build-aarch64 \
@@ -383,13 +457,13 @@ flatpak-builder \
 flatpak build-update-repo \
   --generate-static-deltas \
   --gpg-sign=ABCD1234EFGH5678 \
-  /path/to/flatpak-repo/repo
+  ~/code/flatpak-repo/repo
 
-# Sync to hosting
-cd /path/to/flatpak-repo
+# Step 3: Commit and push HOSTING repository
+cd ~/code/flatpak-repo
 git add repo/
 git commit -m "Publish v1.1.0"
-git push origin main
+git push origin main  # Git LFS will handle large files automatically
 ```
 
 Users will automatically get the update next time they run `flatpak update`!
@@ -545,13 +619,14 @@ You can host multiple applications in the same repository. Users add your reposi
 ### Adding a Second Application
 
 ```bash
-# Navigate to your second app project
-cd /path/to/your-second-app
+# Navigate to your second app project (another APPLICATION repository)
+cd ~/code/your-second-app
 
-# Build for x86_64 and add to the SAME repository
+# Build for x86_64 and add to the SAME HOSTING repository
+# Notice: --repo points to the same flatpak-repo as before
 flatpak-builder \
   --arch=x86_64 \
-  --repo=/path/to/flatpak-repo/repo \
+  --repo=~/code/flatpak-repo/repo \
   --gpg-sign=ABCD1234EFGH5678 \
   --force-clean \
   build-x86_64 \
@@ -560,7 +635,7 @@ flatpak-builder \
 # Build for aarch64
 flatpak-builder \
   --arch=aarch64 \
-  --repo=/path/to/flatpak-repo/repo \
+  --repo=~/code/flatpak-repo/repo \
   --gpg-sign=ABCD1234EFGH5678 \
   --force-clean \
   build-aarch64 \
@@ -570,7 +645,7 @@ flatpak-builder \
 flatpak build-update-repo \
   --generate-static-deltas \
   --gpg-sign=ABCD1234EFGH5678 \
-  /path/to/flatpak-repo/repo
+  ~/code/flatpak-repo/repo
 ```
 
 ### Update the Website
@@ -593,16 +668,28 @@ flatpak run me.santisbon.AnotherApp</code></pre>
 ### Deploy Updates
 
 ```bash
-cd /path/to/flatpak-repo
-git add repo/
+# Commit and push changes in HOSTING repository
+cd ~/code/flatpak-repo
+git add repo/ index.html  # Add both repo changes and website updates
 git commit -m "Add AnotherApp to repository"
-git push origin main
+git push origin main  # Git LFS handles large files automatically
 ```
 
 Users automatically see the new app:
 ```bash
 flatpak remote-ls santisbon-apps
 # Shows both me.santisbon.iCloudServices and me.santisbon.AnotherApp
+```
+
+**Directory structure reminder**:
+```
+~/code/
+├── icloud-flatpak/         # Application repo #1
+├── your-second-app/        # Application repo #2
+└── flatpak-repo/           # HOSTING repo (contains both apps)
+    ├── repo/               # OSTree repository with all apps
+    ├── index.html          # Website
+    └── santisbon-apps.flatpakrepo
 ```
 
 ## Part 7: Troubleshooting
