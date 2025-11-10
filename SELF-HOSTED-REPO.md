@@ -299,7 +299,7 @@ Url=https://santisbon.github.io/flatpak-repo/repo
 Homepage=https://santisbon.github.io/flatpak-repo/
 ```
 
-**IMPORTANT**: See [GIT-LFS.md](GIT-LFS.md) for detailed Git LFS documentation if you encounter issues.
+**IMPORTANT**: See [GIT-LFS.md](https://github.com/santisbon/flatpak-repo/blob/main/GIT-LFS.md) for detailed Git LFS documentation if you encounter issues.
 
 ### Option B: Custom Domain
 
