@@ -214,7 +214,7 @@ flatpak-builder --user --install --force-clean build-dir me.santisbon.iCloudServ
 
 This project is provided as-is.
 
-iCloud is a trademark of Apple Inc. This is an unofficial third-party application not affiliated with Apple.
+iCloud is a trademark of Apple Inc. This is an unofficial third-party application not affiliated with Apple Inc. Icons by The Cross-Platform Organization (https://github.com/cross-platform) under GNU GPL v3.
 
 ## Support
 
