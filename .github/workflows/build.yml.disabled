@@ -1,0 +1,64 @@
+name: Build Multi-Arch Flatpak
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  release:
+    types: [ created ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        arch: [x86_64, aarch64]
+        include:
+          - arch: x86_64
+            docker_arch: amd64
+          - arch: aarch64
+            docker_arch: arm64
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v3
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Install Flatpak
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y flatpak flatpak-builder
+        flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+        flatpak install -y flathub org.freedesktop.Platform//${{ matrix.arch }}/25.08
+        flatpak install -y flathub org.freedesktop.Sdk//${{ matrix.arch }}/25.08
+
+    - name: Build Flatpak
+      run: |
+        flatpak-builder --arch=${{ matrix.arch }} --repo=repo --force-clean build-dir me.santisbon.iCloudServices.yaml
+
+    - name: Create Bundle
+      run: |
+        flatpak build-bundle repo icloud-services-${{ matrix.arch }}.flatpak me.santisbon.iCloudServices --arch=${{ matrix.arch }}
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: icloud-services-${{ matrix.arch }}
+        path: icloud-services-${{ matrix.arch }}.flatpak
+
+    - name: Upload Release Asset
+      if: github.event_name == 'release'
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: ./icloud-services-${{ matrix.arch }}.flatpak
+        asset_name: icloud-services-${{ matrix.arch }}.flatpak
+        asset_content_type: application/octet-stream

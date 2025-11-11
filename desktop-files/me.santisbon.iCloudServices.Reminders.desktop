@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=iCloud Reminders
+Comment=Access iCloud Reminders
+Icon=me.santisbon.iCloudServices.Reminders
+Exec=/app/bin/launch-icloud.sh reminders
+Categories=Office;ProjectManagement;
+Terminal=false
+StartupNotify=true
+StartupWMClass=icloud-reminders

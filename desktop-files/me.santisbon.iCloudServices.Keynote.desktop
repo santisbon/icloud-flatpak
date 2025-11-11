@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=iCloud Keynote
+Comment=Access iCloud Keynote
+Icon=me.santisbon.iCloudServices.Keynote
+Exec=/app/bin/launch-icloud.sh keynote
+Categories=Office;Presentation;
+Terminal=false
+StartupNotify=true
+StartupWMClass=icloud-keynote

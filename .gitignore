@@ -1,0 +1,24 @@
+# Flatpak build directories
+build-dir/
+build-*/
+.flatpak-builder/
+repo/
+output-*/
+
+# Flatpak bundles
+*.flatpak
+
+# Build artifacts
+*.tar.gz
+*.tar.xz
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db

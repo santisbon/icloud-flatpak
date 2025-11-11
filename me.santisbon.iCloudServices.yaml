@@ -1,0 +1,44 @@
+id: me.santisbon.iCloudServices
+runtime: org.freedesktop.Platform
+runtime-version: '25.08'
+sdk: org.freedesktop.Sdk
+command: launch-icloud.sh
+
+finish-args:
+  - --share=ipc
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --device=dri
+  - --talk-name=org.freedesktop.Flatpak
+
+modules:
+  - name: icloud-services
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 scripts/launch-icloud.sh /app/bin/launch-icloud.sh
+      - install -Dm644 me.santisbon.iCloudServices.metainfo.xml /app/share/metainfo/me.santisbon.iCloudServices.metainfo.xml
+      - install -Dm644 desktop-files/me.santisbon.iCloudServices.Mail.desktop /app/share/applications/me.santisbon.iCloudServices.Mail.desktop
+      - install -Dm644 desktop-files/me.santisbon.iCloudServices.Contacts.desktop /app/share/applications/me.santisbon.iCloudServices.Contacts.desktop
+      - install -Dm644 desktop-files/me.santisbon.iCloudServices.Calendar.desktop /app/share/applications/me.santisbon.iCloudServices.Calendar.desktop
+      - install -Dm644 desktop-files/me.santisbon.iCloudServices.Photos.desktop /app/share/applications/me.santisbon.iCloudServices.Photos.desktop
+      - install -Dm644 desktop-files/me.santisbon.iCloudServices.Drive.desktop /app/share/applications/me.santisbon.iCloudServices.Drive.desktop
+      - install -Dm644 desktop-files/me.santisbon.iCloudServices.Notes.desktop /app/share/applications/me.santisbon.iCloudServices.Notes.desktop
+      - install -Dm644 desktop-files/me.santisbon.iCloudServices.Reminders.desktop /app/share/applications/me.santisbon.iCloudServices.Reminders.desktop
+      - install -Dm644 desktop-files/me.santisbon.iCloudServices.Pages.desktop /app/share/applications/me.santisbon.iCloudServices.Pages.desktop
+      - install -Dm644 desktop-files/me.santisbon.iCloudServices.Numbers.desktop /app/share/applications/me.santisbon.iCloudServices.Numbers.desktop
+      - install -Dm644 desktop-files/me.santisbon.iCloudServices.Keynote.desktop /app/share/applications/me.santisbon.iCloudServices.Keynote.desktop
+      - install -Dm644 desktop-files/me.santisbon.iCloudServices.Find.desktop /app/share/applications/me.santisbon.iCloudServices.Find.desktop
+      - install -Dm644 icons/me.santisbon.iCloudServices.Mail.png /app/share/icons/hicolor/256x256/apps/me.santisbon.iCloudServices.Mail.png
+      - install -Dm644 icons/me.santisbon.iCloudServices.Contacts.png /app/share/icons/hicolor/256x256/apps/me.santisbon.iCloudServices.Contacts.png
+      - install -Dm644 icons/me.santisbon.iCloudServices.Calendar.png /app/share/icons/hicolor/256x256/apps/me.santisbon.iCloudServices.Calendar.png
+      - install -Dm644 icons/me.santisbon.iCloudServices.Photos.png /app/share/icons/hicolor/256x256/apps/me.santisbon.iCloudServices.Photos.png
+      - install -Dm644 icons/me.santisbon.iCloudServices.Drive.png /app/share/icons/hicolor/256x256/apps/me.santisbon.iCloudServices.Drive.png
+      - install -Dm644 icons/me.santisbon.iCloudServices.Notes.png /app/share/icons/hicolor/256x256/apps/me.santisbon.iCloudServices.Notes.png
+      - install -Dm644 icons/me.santisbon.iCloudServices.Reminders.png /app/share/icons/hicolor/256x256/apps/me.santisbon.iCloudServices.Reminders.png
+      - install -Dm644 icons/me.santisbon.iCloudServices.Pages.png /app/share/icons/hicolor/256x256/apps/me.santisbon.iCloudServices.Pages.png
+      - install -Dm644 icons/me.santisbon.iCloudServices.Numbers.png /app/share/icons/hicolor/256x256/apps/me.santisbon.iCloudServices.Numbers.png
+      - install -Dm644 icons/me.santisbon.iCloudServices.Keynote.png /app/share/icons/hicolor/256x256/apps/me.santisbon.iCloudServices.Keynote.png
+      - install -Dm644 icons/me.santisbon.iCloudServices.Find.png /app/share/icons/hicolor/256x256/apps/me.santisbon.iCloudServices.Find.png
+    sources:
+      - type: dir
+        path: .

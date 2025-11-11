@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>me.santisbon.iCloudServices</id>
+  <name>iCloud Services</name>
+  <summary>Access iCloud web services on Linux</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+
+  <icon type="stock">me.santisbon.iCloudServices.Drive</icon>
+
+  <description>
+    <p>
+      iCloud Services provides native desktop integration for Apple's iCloud web services.
+      Each service launches in a dedicated Chrome or Chromium window in App mode (no address bar)
+      for a clean, native-like experience.
+    </p>
+    <p>Features:</p>
+    <ul>
+      <li>Individual launchers for Mail, Contacts, Calendar, Photos, Drive, Notes, Reminders, Pages, Numbers, Keynote, and Find My</li>
+      <li>Clean app-like interface with no browser UI elements</li>
+      <li>Each service has its own persistent login with support for Face ID by using a passkey</li>
+      <li>Native desktop integration with proper icons and application categories</li>
+    </ul>
+    <p>
+      Note: This is an unofficial third-party application not affiliated with Apple Inc.
+      iCloud is a trademark of Apple Inc. Icons by The Cross-Platform Organization (https://github.com/cross-platform) under GNU GPL v3.
+    </p>
+  </description>
+
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/santisbon/icloud-flatpak/main/screenshot1.png</image>
+      <caption>Desktop integration with proper categories and icons</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/santisbon/icloud-flatpak/main/screenshot2.png</image>
+      <caption>Apps pinned to Task Manager</caption>
+    </screenshot>
+  </screenshots>
+
+  <url type="homepage">https://github.com/santisbon/icloud-flatpak</url>
+  <url type="bugtracker">https://github.com/santisbon/icloud-flatpak/issues</url>
+
+  <developer_name>Armando C. Santisbon</developer_name>
+
+  <content_rating type="oars-1.1">
+    <content_attribute id="social-info">moderate</content_attribute>
+  </content_rating>
+
+  <releases>
+    <release version="1.0.0" date="2025-11-09">
+      <description>
+        <p>Initial release</p>
+        <ul>
+          <li>Support for all 11 iCloud services</li>
+          <li>Architectures: amd64 (most PCs) and arm64 (Apple Silicon with Asahi Linux, Raspberry Pi)</li>
+          <li>Debian/Ubuntu and Fedora</li>
+        </ul>
+      </description>
+    </release>
+  </releases>
+
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Mail.desktop</launchable>
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Contacts.desktop</launchable>
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Calendar.desktop</launchable>
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Photos.desktop</launchable>
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Drive.desktop</launchable>
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Notes.desktop</launchable>
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Reminders.desktop</launchable>
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Pages.desktop</launchable>
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Numbers.desktop</launchable>
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Keynote.desktop</launchable>
+  <launchable type="desktop-id">me.santisbon.iCloudServices.Find.desktop</launchable>
+
+  <requires>
+    <id>org.chromium.Chromium</id>
+  </requires>
+
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>touch</control>
+  </supports>
+</component>

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=iCloud Find My
+Comment=Access iCloud Find My
+Icon=me.santisbon.iCloudServices.Find
+Exec=/app/bin/launch-icloud.sh find
+Categories=Utility;
+Terminal=false
+StartupNotify=true
+StartupWMClass=icloud-find
